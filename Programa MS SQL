@@ -1,0 +1,3024 @@
+/*==============================================================*/
+/* DBMS name:      Microsoft SQL Server 2016                    */
+/* Created on:     29/07/2021 04:29:39                          */
+/*==============================================================*/
+
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_APARTAMENTO_AD')
+          and type = 'TR')
+   drop trigger REGISTRO_APARTAMENTO_AD
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('UPDATE_APARTAMENTO')
+          and type = 'TR')
+   drop trigger UPDATE_APARTAMENTO
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_APARTAMENTO_AI')
+          and type = 'TR')
+   drop trigger REGISTRO_APARTAMENTO_AI
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_APARTAMENTO_AU')
+          and type = 'TR')
+   drop trigger REGISTRO_APARTAMENTO_AU
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_BICICLETERO_AD')
+          and type = 'TR')
+   drop trigger REGISTRO_BICICLETERO_AD
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('UPDATE_BICICLETERO')
+          and type = 'TR')
+   drop trigger UPDATE_BICICLETERO
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_BICICLETERO_AI')
+          and type = 'TR')
+   drop trigger REGISTRO_BICICLETERO_AI
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_BICICLETERO_AU')
+          and type = 'TR')
+   drop trigger REGISTRO_BICICLETERO_AU
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_COMPRA_AD')
+          and type = 'TR')
+   drop trigger REGISTRO_COMPRA_AD
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_COMPRA_AI')
+          and type = 'TR')
+   drop trigger REGISTRO_COMPRA_AI
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_COMPRA_AU')
+          and type = 'TR')
+   drop trigger REGISTRO_COMPRA_AU
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_CONTRATISTA_AD')
+          and type = 'TR')
+   drop trigger REGISTRO_CONTRATISTA_AD
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('UPDATE_CONTRATISTA')
+          and type = 'TR')
+   drop trigger UPDATE_CONTRATISTA
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_CONTRATISTA_AI')
+          and type = 'TR')
+   drop trigger REGISTRO_CONTRATISTA_AI
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_CONTRATISTA_AU')
+          and type = 'TR')
+   drop trigger REGISTRO_CONTRATISTA_AU
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_DEPOSITO_AD')
+          and type = 'TR')
+   drop trigger REGISTRO_DEPOSITO_AD
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('UPDATE_DEPOSITO')
+          and type = 'TR')
+   drop trigger UPDATE_DEPOSITO
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_DEPOSITO_AI')
+          and type = 'TR')
+   drop trigger REGISTRO_DEPOSITO_AI
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_DEPOSITO_AU')
+          and type = 'TR')
+   drop trigger REGISTRO_DEPOSITO_AU
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_MASCOTA_AD')
+          and type = 'TR')
+   drop trigger REGISTRO_MASCOTA_AD
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('UPDATE_MASCOTA')
+          and type = 'TR')
+   drop trigger UPDATE_MASCOTA
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_MASCOTA_AI')
+          and type = 'TR')
+   drop trigger REGISTRO_MASCOTA_AI
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_MASCOTA_AU')
+          and type = 'TR')
+   drop trigger REGISTRO_MASCOTA_AU
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_PARQUEADERO_AD')
+          and type = 'TR')
+   drop trigger REGISTRO_PARQUEADERO_AD
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('UPDATE_PARQUEADERO')
+          and type = 'TR')
+   drop trigger UPDATE_PARQUEADERO
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_PARQUEADERO_AI')
+          and type = 'TR')
+   drop trigger REGISTRO_PARQUEADERO_AI
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_PARQUEADERO_AU')
+          and type = 'TR')
+   drop trigger REGISTRO_PARQUEADERO_AU
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_PERSONA_AI')
+          and type = 'TR')
+   drop trigger REGISTRO_PERSONA_AI
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('UPDATE_PERSONA')
+          and type = 'TR')
+   drop trigger UPDATE_PERSONA
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_PERSONA_AU')
+          and type = 'TR')
+   drop trigger REGISTRO_PERSONA_AU
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_PERSONA_AD')
+          and type = 'TR')
+   drop trigger REGISTRO_PERSONA_AD
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_PRODUCTO_AD')
+          and type = 'TR')
+   drop trigger REGISTRO_PRODUCTO_AD
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('UPDATE_PRODUCTO')
+          and type = 'TR')
+   drop trigger UPDATE_PRODUCTO
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_PRODUCTO_AI')
+          and type = 'TR')
+   drop trigger REGISTRO_PRODUCTO_AI
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_PRODUCTO_AU')
+          and type = 'TR')
+   drop trigger REGISTRO_PRODUCTO_AU
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_PROVEEDOR_AD')
+          and type = 'TR')
+   drop trigger REGISTRO_PROVEEDOR_AD
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('UPDATE_PROVEEDOR')
+          and type = 'TR')
+   drop trigger UPDATE_PROVEEDOR
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_PROVEEDOR_AI')
+          and type = 'TR')
+   drop trigger REGISTRO_PROVEEDOR_AI
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_PROVEEDOR_AU')
+          and type = 'TR')
+   drop trigger REGISTRO_PROVEEDOR_AU
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_REC_COMUNAL_AD')
+          and type = 'TR')
+   drop trigger REGISTRO_REC_COMUNAL_AD
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('UPDATE_REC_COMUNAL')
+          and type = 'TR')
+   drop trigger UPDATE_REC_COMUNAL
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_REC_COMUNAL_AI')
+          and type = 'TR')
+   drop trigger REGISTRO_REC_COMUNAL_AI
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_REC_COMUNAL_AU')
+          and type = 'TR')
+   drop trigger REGISTRO_REC_COMUNAL_AU
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('CLR_TRIGGER_REGISTRO_DE_ACCIONES')
+          and type = 'TR')
+   drop trigger CLR_TRIGGER_REGISTRO_DE_ACCIONES
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_REG_GUARDAS_AD')
+          and type = 'TR')
+   drop trigger REGISTRO_REG_GUARDAS_AD
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('UPDATE_REG_GUARDAS')
+          and type = 'TR')
+   drop trigger UPDATE_REG_GUARDAS
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_REG_GUARDAS_AI')
+          and type = 'TR')
+   drop trigger REGISTRO_REG_GUARDAS_AI
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_REG_GUARDAS_AU')
+          and type = 'TR')
+   drop trigger REGISTRO_REG_GUARDAS_AU
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_REG_REC_AD')
+          and type = 'TR')
+   drop trigger REGISTRO_REG_REC_AD
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('UPDATE_REG_REC')
+          and type = 'TR')
+   drop trigger UPDATE_REG_REC
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_REG_REC_AI')
+          and type = 'TR')
+   drop trigger REGISTRO_REG_REC_AI
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_REG_REC_AU')
+          and type = 'TR')
+   drop trigger REGISTRO_REG_REC_AU
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_VISITAS_AD')
+          and type = 'TR')
+   drop trigger REGISTRO_VISITAS_AD
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('UPDATE_VISITAS')
+          and type = 'TR')
+   drop trigger UPDATE_VISITAS
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_VISITAS_AI')
+          and type = 'TR')
+   drop trigger REGISTRO_VISITAS_AI
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_VISITAS_AU')
+          and type = 'TR')
+   drop trigger REGISTRO_VISITAS_AU
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_TELEFONO_AD')
+          and type = 'TR')
+   drop trigger REGISTRO_TELEFONO_AD
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_TELEFONO_AI')
+          and type = 'TR')
+   drop trigger REGISTRO_TELEFONO_AI
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_TELEFONO_AU')
+          and type = 'TR')
+   drop trigger REGISTRO_TELEFONO_AU
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_TIPO_APTO_AD')
+          and type = 'TR')
+   drop trigger REGISTRO_TIPO_APTO_AD
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('UPDATE_TIPO_APTO')
+          and type = 'TR')
+   drop trigger UPDATE_TIPO_APTO
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_TIPO_APTO_AI')
+          and type = 'TR')
+   drop trigger REGISTRO_TIPO_APTO_AI
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_TIPO_APTO_AU')
+          and type = 'TR')
+   drop trigger REGISTRO_TIPO_APTO_AU
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_TRANSACCION_AD')
+          and type = 'TR')
+   drop trigger REGISTRO_TRANSACCION_AD
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('UPDATE_TRANSACCION')
+          and type = 'TR')
+   drop trigger UPDATE_TRANSACCION
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_TRANSACCION_AI')
+          and type = 'TR')
+   drop trigger REGISTRO_TRANSACCION_AI
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_TRANSACCION_AU')
+          and type = 'TR')
+   drop trigger REGISTRO_TRANSACCION_AU
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_VEHICULO_AD')
+          and type = 'TR')
+   drop trigger REGISTRO_VEHICULO_AD
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('UPDATE_VEHICULO')
+          and type = 'TR')
+   drop trigger UPDATE_VEHICULO
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_VEHICULO_AI')
+          and type = 'TR')
+   drop trigger REGISTRO_VEHICULO_AI
+go
+
+if exists (select 1
+          from sysobjects
+          where id = object_id('REGISTRO_VEHICULO_AU')
+          and type = 'TR')
+   drop trigger REGISTRO_VEHICULO_AU
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('APARTAMENTO') and o.name = 'FK_APARTAME_ES_PROPIE_PERSONA')
+alter table APARTAMENTO
+   drop constraint FK_APARTAME_ES_PROPIE_PERSONA
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('APARTAMENTO') and o.name = 'FK_APARTAME_TIPO_DE_A_TIPO_DE_')
+alter table APARTAMENTO
+   drop constraint FK_APARTAME_TIPO_DE_A_TIPO_DE_
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('MASCOTA') and o.name = 'FK_MASCOTA_ES_RESPON_APARTAME')
+alter table MASCOTA
+   drop constraint FK_MASCOTA_ES_RESPON_APARTAME
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('PARQUEADERO') and o.name = 'FK_PARQUEAD_PARQUEADE_APARTAME')
+alter table PARQUEADERO
+   drop constraint FK_PARQUEAD_PARQUEADE_APARTAME
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('PERSONA') and o.name = 'FK_PERSONA_ES_RESIDE_APARTAME')
+alter table PERSONA
+   drop constraint FK_PERSONA_ES_RESIDE_APARTAME
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('PERSONA') and o.name = 'FK_PERSONA_RESPONSAB_PERSONA')
+alter table PERSONA
+   drop constraint FK_PERSONA_RESPONSAB_PERSONA
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('PRODUCTO') and o.name = 'FK_PRODUCTO_OFRECE_PROVEEDO')
+alter table PRODUCTO
+   drop constraint FK_PRODUCTO_OFRECE_PROVEEDO
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('REGISTRO_VISITAS') and o.name = 'FK_REGISTRO_SE_DIRIGE_APARTAME')
+alter table REGISTRO_VISITAS
+   drop constraint FK_REGISTRO_SE_DIRIGE_APARTAME
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('REGISTRO_VISITAS') and o.name = 'FK_REGISTRO_TIENE_PERSONA')
+alter table REGISTRO_VISITAS
+   drop constraint FK_REGISTRO_TIENE_PERSONA
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('REGISTRO_VISITAS') and o.name = 'FK_REGISTRO_VEHICULO__VEHICULO')
+alter table REGISTRO_VISITAS
+   drop constraint FK_REGISTRO_VEHICULO__VEHICULO
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('VEHICULO') and o.name = 'FK_VEHICULO_ASIGNADO_PARQUEAD')
+alter table VEHICULO
+   drop constraint FK_VEHICULO_ASIGNADO_PARQUEAD
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('V_VEHICULO')
+            and   type = 'V')
+   drop view V_VEHICULO
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('V_TRANSACCION')
+            and   type = 'V')
+   drop view V_TRANSACCION
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('V_TIPO_DE_APARTAMENTO')
+            and   type = 'V')
+   drop view V_TIPO_DE_APARTAMENTO
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('V_TELEFONO')
+            and   type = 'V')
+   drop view V_TELEFONO
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('V_REGISTRO_VISITAS')
+            and   type = 'V')
+   drop view V_REGISTRO_VISITAS
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('V_REGISTRO_REC_COM')
+            and   type = 'V')
+   drop view V_REGISTRO_REC_COM
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('V_REGISTRO_GUARDAS')
+            and   type = 'V')
+   drop view V_REGISTRO_GUARDAS
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('V_REGISTRO_DE_ACCIONES')
+            and   type = 'V')
+   drop view V_REGISTRO_DE_ACCIONES
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('V_RECURSO_COMUNAL')
+            and   type = 'V')
+   drop view V_RECURSO_COMUNAL
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('V_PROVEEDOR')
+            and   type = 'V')
+   drop view V_PROVEEDOR
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('V_PRODUCTO')
+            and   type = 'V')
+   drop view V_PRODUCTO
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('V_PERSONA')
+            and   type = 'V')
+   drop view V_PERSONA
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('V_PARQUEADERO')
+            and   type = 'V')
+   drop view V_PARQUEADERO
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('V_MASCOTA')
+            and   type = 'V')
+   drop view V_MASCOTA
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('V_DEPOSITO')
+            and   type = 'V')
+   drop view V_DEPOSITO
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('V_CONTRATISTA')
+            and   type = 'V')
+   drop view V_CONTRATISTA
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('V_COMPRA')
+            and   type = 'V')
+   drop view V_COMPRA
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('V_BICICLETERO')
+            and   type = 'V')
+   drop view V_BICICLETERO
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('V_APARTAMENTO')
+            and   type = 'V')
+   drop view V_APARTAMENTO
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('APARTAMENTO')
+            and   name  = 'TIPO_DE_APARTAMENTO_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index APARTAMENTO.TIPO_DE_APARTAMENTO_FK
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('APARTAMENTO')
+            and   name  = 'ES_PROPIETARIO_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index APARTAMENTO.ES_PROPIETARIO_FK
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('APARTAMENTO')
+            and   type = 'U')
+   drop table APARTAMENTO
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('BICICLETERO')
+            and   name  = 'BICICLETERO_ASIGNADO_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index BICICLETERO.BICICLETERO_ASIGNADO_FK
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('BICICLETERO')
+            and   type = 'U')
+   drop table BICICLETERO
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('COMPRA')
+            and   name  = 'COMPRAS2_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index COMPRA.COMPRAS2_FK
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('COMPRA')
+            and   name  = 'COMPRAS_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index COMPRA.COMPRAS_FK
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('COMPRA')
+            and   type = 'U')
+   drop table COMPRA
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('CONTRATISTA')
+            and   type = 'U')
+   drop table CONTRATISTA
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('DEPOSITO')
+            and   name  = 'DEPOSITO_ASIGNADO_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index DEPOSITO.DEPOSITO_ASIGNADO_FK
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('DEPOSITO')
+            and   type = 'U')
+   drop table DEPOSITO
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('MASCOTA')
+            and   name  = 'ES_RESPONSABLE_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index MASCOTA.ES_RESPONSABLE_FK
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('MASCOTA')
+            and   type = 'U')
+   drop table MASCOTA
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('PARQUEADERO')
+            and   name  = 'TIENE_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index PARQUEADERO.TIENE_FK
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('PARQUEADERO')
+            and   type = 'U')
+   drop table PARQUEADERO
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('PERSONA')
+            and   name  = 'RESPONSABLE_DE_MENOR_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index PERSONA.RESPONSABLE_DE_MENOR_FK
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('PERSONA')
+            and   name  = 'ES_RESIDENTE_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index PERSONA.ES_RESIDENTE_FK
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('PERSONA')
+            and   type = 'U')
+   drop table PERSONA
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('PRODUCTO')
+            and   name  = 'OFRECE_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index PRODUCTO.OFRECE_FK
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('PRODUCTO')
+            and   name  = 'OFRECE_2_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index PRODUCTO.OFRECE_2_FK
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('PRODUCTO')
+            and   type = 'U')
+   drop table PRODUCTO
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('PROVEEDOR')
+            and   type = 'U')
+   drop table PROVEEDOR
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('RECURSO_COMUNAL')
+            and   type = 'U')
+   drop table RECURSO_COMUNAL
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('REGISTRO_DE_ACCIONES')
+            and   type = 'U')
+   drop table REGISTRO_DE_ACCIONES
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('REGISTRO_GUARDAS')
+            and   name  = 'ACTIVIDAD_GUARDAS_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index REGISTRO_GUARDAS.ACTIVIDAD_GUARDAS_FK
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('REGISTRO_GUARDAS')
+            and   type = 'U')
+   drop table REGISTRO_GUARDAS
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('REGISTRO_REC_COM')
+            and   name  = 'UTILIZA_RECURSOS_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index REGISTRO_REC_COM.UTILIZA_RECURSOS_FK
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('REGISTRO_REC_COM')
+            and   name  = 'RELATIONSHIP_15_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index REGISTRO_REC_COM.RELATIONSHIP_15_FK
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('REGISTRO_REC_COM')
+            and   type = 'U')
+   drop table REGISTRO_REC_COM
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('REGISTRO_VISITAS')
+            and   name  = 'ES_VISITANTE_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index REGISTRO_VISITAS.ES_VISITANTE_FK
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('REGISTRO_VISITAS')
+            and   type = 'U')
+   drop table REGISTRO_VISITAS
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('TELEFONO')
+            and   name  = 'TIENE_TELEFONOS_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index TELEFONO.TIENE_TELEFONOS_FK
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('TELEFONO')
+            and   type = 'U')
+   drop table TELEFONO
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('TIPO_DE_APARTAMENTO')
+            and   type = 'U')
+   drop table TIPO_DE_APARTAMENTO
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('TRANSACCION')
+            and   name  = 'RECAUDO_APARTAMENTOS_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index TRANSACCION.RECAUDO_APARTAMENTOS_FK
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('TRANSACCION')
+            and   type = 'U')
+   drop table TRANSACCION
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('VEHICULO')
+            and   name  = 'ASIGNADO_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index VEHICULO.ASIGNADO_FK
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('VEHICULO')
+            and   type = 'U')
+   drop table VEHICULO
+go
+
+/*==============================================================*/
+/* Table: APARTAMENTO                                           */
+/*==============================================================*/
+create table APARTAMENTO (
+   IDENTIFICACION       varchar(6)           not null,
+   DOC_IDENTIDAD        varchar(15)          null,
+   TIPO                 varchar(1)           not null,
+   COMPROMISOS          int                  not null,
+   CHIP                 varchar(15)          not null,
+   MATRICULA            varchar(15)          not null,
+   COEFICIENTE          decimal              not null,
+   DIGITADOR            varchar(15)          not null default user_name(),
+   MODIFICADO           datetime             not null default getdate(),
+   constraint PK_APARTAMENTO primary key (IDENTIFICACION)
+)
+go
+
+/*==============================================================*/
+/* Index: ES_PROPIETARIO_FK                                     */
+/*==============================================================*/
+
+
+
+
+create nonclustered index ES_PROPIETARIO_FK on APARTAMENTO (DOC_IDENTIDAD ASC)
+go
+
+/*==============================================================*/
+/* Index: TIPO_DE_APARTAMENTO_FK                                */
+/*==============================================================*/
+
+
+
+
+create nonclustered index TIPO_DE_APARTAMENTO_FK on APARTAMENTO (TIPO ASC)
+go
+
+/*==============================================================*/
+/* Table: BICICLETERO                                           */
+/*==============================================================*/
+create table BICICLETERO (
+   BICICLETERO_NUMERO   int                  not null,
+   IDENTIFICACION       varchar(6)           null,
+   BICICLETERO_OTROS    varchar(500)         null,
+   DIGITADOR            varchar(15)          not null default user_name(),
+   MODIFICADO           datetime             not null default getdate(),
+   constraint PK_BICICLETERO primary key (BICICLETERO_NUMERO)
+)
+go
+
+/*==============================================================*/
+/* Index: BICICLETERO_ASIGNADO_FK                               */
+/*==============================================================*/
+
+
+
+
+create nonclustered index BICICLETERO_ASIGNADO_FK on BICICLETERO (IDENTIFICACION ASC)
+go
+
+/*==============================================================*/
+/* Table: COMPRA                                                */
+/*==============================================================*/
+create table COMPRA (
+   ID_PRODUCTO          int                  not null,
+   ID_TRANSACCION       int                  not null,
+   CANTIDAD             decimal              not null default 1,
+   DIGITADOR            varchar(15)          not null default user_name(),
+   MODIFICADO           datetime             not null default getdate(),
+   constraint PK_COMPRA primary key (ID_PRODUCTO, ID_TRANSACCION)
+)
+go
+
+/*==============================================================*/
+/* Index: COMPRAS_FK                                            */
+/*==============================================================*/
+
+
+
+
+create nonclustered index COMPRAS_FK on COMPRA (ID_PRODUCTO ASC)
+go
+
+/*==============================================================*/
+/* Index: COMPRAS2_FK                                           */
+/*==============================================================*/
+
+
+
+
+create nonclustered index COMPRAS2_FK on COMPRA (ID_TRANSACCION ASC)
+go
+
+/*==============================================================*/
+/* Table: CONTRATISTA                                           */
+/*==============================================================*/
+create table CONTRATISTA (
+   DOC_IDENTIDAD        varchar(15)          not null,
+   CONTRATO_ACTIVO      bit                  not null,
+   CARGO                varchar(20)          not null,
+   APTITUD              int                  not null,
+   OBSERVACIONES        varchar(300)         null,
+   PRIMER_CONTRATO      bit                  not null,
+   DIGITADOR            varchar(15)          not null default user_name(),
+   MODIFICADO           datetime             not null default getdate(),
+   constraint PK_CONTRATISTA primary key (DOC_IDENTIDAD)
+)
+go
+
+/*==============================================================*/
+/* Table: DEPOSITO                                              */
+/*==============================================================*/
+create table DEPOSITO (
+   DEPOSITO_NUMERO      int                  not null,
+   IDENTIFICACION       varchar(6)           null,
+   DEPOSITO_OTROS       varchar(500)         null,
+   DIGITADOR            varchar(15)          not null default user_name(),
+   MODIFICADO           datetime             not null default getdate(),
+   constraint PK_DEPOSITO primary key (DEPOSITO_NUMERO)
+)
+go
+
+/*==============================================================*/
+/* Index: DEPOSITO_ASIGNADO_FK                                  */
+/*==============================================================*/
+
+
+
+
+create nonclustered index DEPOSITO_ASIGNADO_FK on DEPOSITO (IDENTIFICACION ASC)
+go
+
+/*==============================================================*/
+/* Table: MASCOTA                                               */
+/*==============================================================*/
+create table MASCOTA (
+   ID_MASCOTA           int                  not null,
+   IDENTIFICACION       varchar(6)           not null,
+   ESPECIE              varchar(30)          not null,
+   RAZA                 varchar(30)          null,
+   DIGITADOR            varchar(15)          not null default user_name(),
+   MODIFICADO           datetime             not null default getdate(),
+   constraint PK_MASCOTA primary key (ID_MASCOTA)
+)
+go
+
+/*==============================================================*/
+/* Index: ES_RESPONSABLE_FK                                     */
+/*==============================================================*/
+
+
+
+
+create nonclustered index ES_RESPONSABLE_FK on MASCOTA (IDENTIFICACION ASC)
+go
+
+/*==============================================================*/
+/* Table: PARQUEADERO                                           */
+/*==============================================================*/
+create table PARQUEADERO (
+   PARQUEADERO_NUMERO   varchar(5)           not null,
+   IDENTIFICACION       varchar(6)           null,
+   TIPO_PARQUEADERO     varchar(5)           not null,
+   OTROS                varchar(500)         null,
+   DIGITADOR            varchar(15)          not null default user_name(),
+   MODIFICADO           datetime             not null default getdate(),
+   constraint PK_PARQUEADERO primary key (PARQUEADERO_NUMERO)
+)
+go
+
+/*==============================================================*/
+/* Index: TIENE_FK                                              */
+/*==============================================================*/
+
+
+
+
+create nonclustered index TIENE_FK on PARQUEADERO (IDENTIFICACION ASC)
+go
+
+/*==============================================================*/
+/* Table: PERSONA                                               */
+/*==============================================================*/
+create table PERSONA (
+   DOC_IDENTIDAD        varchar(15)          not null,
+   NOMBRE               varchar(300)         not null,
+   FECHA_NACIMIENTO     date                 not null,
+   ESTADO_CIVIL         varchar(15)          not null,
+   GENERO               varchar(1)           not null,
+   LUGAR_DE_NACIMIENTO  char(7)              not null,
+   DIRECCION            varchar(150)         not null,
+   PERSONA_DE_CONTACTO  varchar(350)         not null,
+   INFO_SANGRE          varchar(3)           null,
+   CORREO               varchar(100)         null,
+   APARTAMENTO_DE_RESIDENCIA varchar(6)           null,
+   ADULTO_RESPONSABLE   varchar(15)          null,
+   CARGO_EMPLEADO       varchar(30)          null,
+   TAG                  varchar(20)          null,
+   INFO_LABORAL         varchar(300)         null,
+   DIGITADOR            varchar(15)          not null default user_name(),
+   MODIFICADO           datetime             not null default getdate(),
+   constraint PK_PERSONA primary key (DOC_IDENTIDAD)
+)
+go
+
+/*==============================================================*/
+/* Index: ES_RESIDENTE_FK                                       */
+/*==============================================================*/
+
+
+
+
+create nonclustered index ES_RESIDENTE_FK on PERSONA (APARTAMENTO_DE_RESIDENCIA ASC)
+go
+
+/*==============================================================*/
+/* Index: RESPONSABLE_DE_MENOR_FK                               */
+/*==============================================================*/
+
+
+
+
+create nonclustered index RESPONSABLE_DE_MENOR_FK on PERSONA (ADULTO_RESPONSABLE ASC)
+go
+
+/*==============================================================*/
+/* Table: PRODUCTO                                              */
+/*==============================================================*/
+create table PRODUCTO (
+   ID_PRODUCTO          int                  not null,
+   ID_PROVEEDOR         int                  null,
+   DOC_IDENTIDAD        varchar(15)          null,
+   NOMBRE               varchar(300)         not null,
+   UNIDAD_DE_MERCADEO   varchar(50)          not null,
+   PRECIO_UNITARIO      int                  not null,
+   INVENTARIO           decimal              null,
+   DIGITADOR            varchar(15)          not null default user_name(),
+   MODIFICADO           datetime             not null default getdate(),
+   constraint PK_PRODUCTO primary key (ID_PRODUCTO)
+)
+go
+
+/*==============================================================*/
+/* Index: OFRECE_2_FK                                           */
+/*==============================================================*/
+
+
+
+
+create nonclustered index OFRECE_2_FK on PRODUCTO (DOC_IDENTIDAD ASC)
+go
+
+/*==============================================================*/
+/* Index: OFRECE_FK                                             */
+/*==============================================================*/
+
+
+
+
+create nonclustered index OFRECE_FK on PRODUCTO (ID_PROVEEDOR ASC)
+go
+
+/*==============================================================*/
+/* Table: PROVEEDOR                                             */
+/*==============================================================*/
+create table PROVEEDOR (
+   ID_PROVEEDOR         int                  not null,
+   NOMBRE               varchar(300)         not null,
+   NIT                  varchar(20)          not null,
+   CONMUTADOR           varchar(15)          not null,
+   DIRECCION            varchar(150)         not null,
+   REP_LEGAL            varchar(300)         not null,
+   PERSONA_DE_CONTACTO  varchar(350)         not null,
+   DIGITADOR            varchar(15)          not null default user_name(),
+   MODIFICADO           datetime             not null default getdate(),
+   constraint PK_PROVEEDOR primary key (ID_PROVEEDOR)
+)
+go
+
+/*==============================================================*/
+/* Table: RECURSO_COMUNAL                                       */
+/*==============================================================*/
+create table RECURSO_COMUNAL (
+   NOMBRE_RECURSO       varchar(100)         not null,
+   DESCRIPCION_RECURSO  varchar(1024)        not null,
+   CAPACIDAD            int                  null,
+   HORA_APERTURA        time                 not null,
+   HORA_CIERRE          time                 not null,
+   COSTO_HR             int                  not null,
+   PERMITE_VISITAS      bit                  not null,
+   DIGITADOR            varchar(15)          not null default user_name(),
+   MODIFICADO           datetime             not null default getdate(),
+   constraint PK_RECURSO_COMUNAL primary key (NOMBRE_RECURSO)
+)
+go
+
+/*==============================================================*/
+/* Table: REGISTRO_DE_ACCIONES                                  */
+/*==============================================================*/
+create table REGISTRO_DE_ACCIONES (
+   REGISTRO_NUMERO      int                  identity(1,1),
+   ACCION               varchar(20)          not null,
+   USUARIO              varchar(15)          not null,
+   OBJETO               varchar(100)         not null,
+   FECHA                datetime             not null,
+   constraint PK_REGISTRO_DE_ACCIONES primary key (REGISTRO_NUMERO)
+)
+go
+
+/*==============================================================*/
+/* Table: REGISTRO_GUARDAS                                      */
+/*==============================================================*/
+create table REGISTRO_GUARDAS (
+   REGISTRO_GUARDA      int                  identity,
+   DOC_IDENTIDAD        varchar(15)          not null,
+   TURNO                char(9)              not null,
+   PUESTO               varchar(50)          not null,
+   FECHA                date                 not null,
+   DIGITADOR            varchar(15)          not null default user_name(),
+   MODIFICADO           datetime             not null default getdate(),
+   constraint PK_REGISTRO_GUARDAS primary key (REGISTRO_GUARDA)
+)
+go
+
+/*==============================================================*/
+/* Index: ACTIVIDAD_GUARDAS_FK                                  */
+/*==============================================================*/
+
+
+
+
+create nonclustered index ACTIVIDAD_GUARDAS_FK on REGISTRO_GUARDAS (DOC_IDENTIDAD ASC)
+go
+
+/*==============================================================*/
+/* Table: REGISTRO_REC_COM                                      */
+/*==============================================================*/
+create table REGISTRO_REC_COM (
+   REGISTRO_USO_RECURSO int                  identity,
+   NOMBRE_RECURSO       varchar(100)         not null,
+   DOC_IDENTIDAD        varchar(15)          not null,
+   FECHA_DE_RESERVA     datetime             not null,
+   DURACION_RESERVA     time                 not null,
+   NUMERO_DE_USUARIOS   int                  not null default 1,
+   DIGITADOR            varchar(15)          not null default user_name(),
+   MODIFICADO           datetime             not null default getdate(),
+   constraint PK_REGISTRO_REC_COM primary key (REGISTRO_USO_RECURSO)
+)
+go
+
+/*==============================================================*/
+/* Index: RELATIONSHIP_15_FK                                    */
+/*==============================================================*/
+
+
+
+
+create nonclustered index RELATIONSHIP_15_FK on REGISTRO_REC_COM (NOMBRE_RECURSO ASC)
+go
+
+/*==============================================================*/
+/* Index: UTILIZA_RECURSOS_FK                                   */
+/*==============================================================*/
+
+
+
+
+create nonclustered index UTILIZA_RECURSOS_FK on REGISTRO_REC_COM (DOC_IDENTIDAD ASC)
+go
+
+/*==============================================================*/
+/* Table: REGISTRO_VISITAS                                      */
+/*==============================================================*/
+create table REGISTRO_VISITAS (
+   REGISTRO_VISITANTE   int                  identity,
+   DOC_IDENTIDAD        varchar(15)          not null,
+   PLACA                varchar(6)           null,
+   IDENTIFICACION       varchar(6)           null,
+   FECHA_INGRESO        datetime             not null,
+   FECHA_SALIDA         datetime             null,
+   TIPO_VISITA          varchar(15)          not null,
+   DIGITADOR            varchar(15)          not null default user_name(),
+   MODIFICADO           datetime             not null default getdate(),
+   constraint PK_REGISTRO_VISITAS primary key (REGISTRO_VISITANTE)
+)
+go
+
+/*==============================================================*/
+/* Index: ES_VISITANTE_FK                                       */
+/*==============================================================*/
+
+
+
+
+create nonclustered index ES_VISITANTE_FK on REGISTRO_VISITAS (DOC_IDENTIDAD ASC)
+go
+
+/*==============================================================*/
+/* Table: TELEFONO                                              */
+/*==============================================================*/
+create table TELEFONO (
+   NUMERO_TELEFONO      varchar(15)          not null,
+   DOC_IDENTIDAD        varchar(15)          not null,
+   DIGITADOR            varchar(15)          not null default user_name(),
+   MODIFICADO           datetime             not null default getdate(),
+   constraint PK_TELEFONO primary key (NUMERO_TELEFONO, DOC_IDENTIDAD)
+)
+go
+
+/*==============================================================*/
+/* Index: TIENE_TELEFONOS_FK                                    */
+/*==============================================================*/
+
+
+
+
+create nonclustered index TIENE_TELEFONOS_FK on TELEFONO (DOC_IDENTIDAD ASC)
+go
+
+/*==============================================================*/
+/* Table: TIPO_DE_APARTAMENTO                                   */
+/*==============================================================*/
+create table TIPO_DE_APARTAMENTO (
+   TIPO                 varchar(1)           not null,
+   AREA                 decimal              not null,
+   HABITACIONES         int                  not null,
+   BANOS                int                  not null,
+   DIGITADOR            varchar(15)          not null default user_name(),
+   MODIFICADO           datetime             not null default getdate(),
+   constraint PK_TIPO_DE_APARTAMENTO primary key (TIPO)
+)
+go
+
+/*==============================================================*/
+/* Table: TRANSACCION                                           */
+/*==============================================================*/
+create table TRANSACCION (
+   ID_TRANSACCION       int                  identity,
+   IDENTIFICACION       varchar(6)           null,
+   TIPO_TRANSACCION     varchar(20)          not null,
+   VALOR_TOTAL          float                not null,
+   FECHA_TRANSACCION    datetime             not null,
+   COMENTARIOS          varchar(200)         null,
+   DIGITADOR            varchar(15)          not null default user_name(),
+   MODIFICADO           datetime             not null default getdate(),
+   constraint PK_TRANSACCION primary key (ID_TRANSACCION)
+)
+go
+
+/*==============================================================*/
+/* Index: RECAUDO_APARTAMENTOS_FK                               */
+/*==============================================================*/
+
+
+
+
+create nonclustered index RECAUDO_APARTAMENTOS_FK on TRANSACCION (IDENTIFICACION ASC)
+go
+
+/*==============================================================*/
+/* Table: VEHICULO                                              */
+/*==============================================================*/
+create table VEHICULO (
+   PLACA                varchar(6)           not null,
+   PARQUEADERO_NUMERO   varchar(5)           null,
+   TIPO_VEHICULO        varchar(5)           not null,
+   FECHA_ULTIMO_INGRESO datetime             not null,
+   FECHA_ULTIMA_SALIDA  datetime             null,
+   DESCRIPCION          varchar(300)         not null,
+   DIGITADOR            varchar(15)          not null default user_name(),
+   MODIFICADO           datetime             not null default getdate(),
+   constraint PK_VEHICULO primary key (PLACA)
+)
+go
+
+/*==============================================================*/
+/* Index: ASIGNADO_FK                                           */
+/*==============================================================*/
+
+
+
+
+create nonclustered index ASIGNADO_FK on VEHICULO (PARQUEADERO_NUMERO ASC)
+go
+
+/*==============================================================*/
+/* View: V_APARTAMENTO                                          */
+/*==============================================================*/
+create view V_APARTAMENTO as
+select
+   IDENTIFICACION,
+   DOC_IDENTIDAD,
+   TIPO,
+   COMPROMISOS,
+   CHIP,
+   MATRICULA,
+   COEFICIENTE
+from
+   APARTAMENTO
+go
+
+/*==============================================================*/
+/* View: V_BICICLETERO                                          */
+/*==============================================================*/
+create view V_BICICLETERO as
+select
+   BICICLETERO.BICICLETERO_NUMERO,
+   BICICLETERO.IDENTIFICACION,
+   BICICLETERO.BICICLETERO_OTROS
+from
+   BICICLETERO
+go
+
+/*==============================================================*/
+/* View: V_COMPRA                                               */
+/*==============================================================*/
+create view V_COMPRA as
+select
+   COMPRA.ID_PRODUCTO,
+   COMPRA.ID_TRANSACCION,
+   COMPRA.CANTIDAD
+from
+   COMPRA
+go
+
+/*==============================================================*/
+/* View: V_CONTRATISTA                                          */
+/*==============================================================*/
+create view V_CONTRATISTA as
+select
+   CONTRATISTA.DOC_IDENTIDAD,
+   CONTRATISTA.CONTRATO_ACTIVO,
+   CONTRATISTA.CARGO,
+   CONTRATISTA.APTITUD,
+   CONTRATISTA.OBSERVACIONES,
+   CONTRATISTA.PRIMER_CONTRATO
+from
+   CONTRATISTA
+go
+
+/*==============================================================*/
+/* View: V_DEPOSITO                                             */
+/*==============================================================*/
+create view V_DEPOSITO as
+select
+   DEPOSITO.DEPOSITO_NUMERO,
+   DEPOSITO.IDENTIFICACION,
+   DEPOSITO.DEPOSITO_OTROS
+from
+   DEPOSITO
+go
+
+/*==============================================================*/
+/* View: V_MASCOTA                                              */
+/*==============================================================*/
+create view V_MASCOTA as
+select
+   MASCOTA.ID_MASCOTA,
+   MASCOTA.IDENTIFICACION,
+   MASCOTA.ESPECIE,
+   MASCOTA.RAZA
+from
+   MASCOTA
+go
+
+/*==============================================================*/
+/* View: V_PARQUEADERO                                          */
+/*==============================================================*/
+create view V_PARQUEADERO as
+select
+   PARQUEADERO.PARQUEADERO_NUMERO,
+   PARQUEADERO.IDENTIFICACION,
+   PARQUEADERO.TIPO_PARQUEADERO,
+   PARQUEADERO.OTROS
+from
+   PARQUEADERO
+go
+
+/*==============================================================*/
+/* View: V_PERSONA                                              */
+/*==============================================================*/
+create view V_PERSONA as
+select
+   DOC_IDENTIDAD,
+   APARTAMENTO_DE_RESIDENCIA,
+   ADULTO_RESPONSABLE,
+   NOMBRE,
+   FECHA_NACIMIENTO,
+   ESTADO_CIVIL,
+   GENERO,
+   LUGAR_DE_NACIMIENTO,
+   DIRECCION,
+   PERSONA_DE_CONTACTO,
+   INFO_SANGRE,
+   CORREO,
+   CARGO_EMPLEADO,
+   TAG,
+   INFO_LABORAL
+from
+   PERSONA
+go
+
+/*==============================================================*/
+/* View: V_PRODUCTO                                             */
+/*==============================================================*/
+create view V_PRODUCTO as
+select
+   PRODUCTO.ID_PRODUCTO,
+   PRODUCTO.ID_PROVEEDOR,
+   PRODUCTO.DOC_IDENTIDAD,
+   PRODUCTO.NOMBRE,
+   PRODUCTO.UNIDAD_DE_MERCADEO,
+   PRODUCTO.PRECIO_UNITARIO,
+   PRODUCTO.INVENTARIO
+from
+   PRODUCTO
+go
+
+/*==============================================================*/
+/* View: V_PROVEEDOR                                            */
+/*==============================================================*/
+create view V_PROVEEDOR as
+select
+   PROVEEDOR.ID_PROVEEDOR,
+   PROVEEDOR.NOMBRE,
+   PROVEEDOR.NIT,
+   PROVEEDOR.CONMUTADOR,
+   PROVEEDOR.DIRECCION,
+   PROVEEDOR.REP_LEGAL,
+   PROVEEDOR.PERSONA_DE_CONTACTO
+from
+   PROVEEDOR
+go
+
+/*==============================================================*/
+/* View: V_RECURSO_COMUNAL                                      */
+/*==============================================================*/
+create view V_RECURSO_COMUNAL as
+select
+   RECURSO_COMUNAL.NOMBRE_RECURSO,
+   RECURSO_COMUNAL.DESCRIPCION_RECURSO,
+   RECURSO_COMUNAL.CAPACIDAD,
+   RECURSO_COMUNAL.HORA_APERTURA,
+   RECURSO_COMUNAL.HORA_CIERRE,
+   RECURSO_COMUNAL.COSTO_HR,
+   RECURSO_COMUNAL.PERMITE_VISITAS
+from
+   RECURSO_COMUNAL
+go
+
+/*==============================================================*/
+/* View: V_REGISTRO_DE_ACCIONES                                 */
+/*==============================================================*/
+create view V_REGISTRO_DE_ACCIONES as
+select
+   REGISTRO_DE_ACCIONES.REGISTRO_NUMERO,
+   REGISTRO_DE_ACCIONES.ACCION,
+   REGISTRO_DE_ACCIONES.USUARIO,
+   REGISTRO_DE_ACCIONES.OBJETO,
+   REGISTRO_DE_ACCIONES.FECHA
+from
+   REGISTRO_DE_ACCIONES
+go
+
+/*==============================================================*/
+/* View: V_REGISTRO_GUARDAS                                     */
+/*==============================================================*/
+create view V_REGISTRO_GUARDAS as
+select
+   REGISTRO_GUARDAS.REGISTRO_GUARDA,
+   REGISTRO_GUARDAS.DOC_IDENTIDAD,
+   REGISTRO_GUARDAS.TURNO,
+   REGISTRO_GUARDAS.PUESTO,
+   REGISTRO_GUARDAS.FECHA
+from
+   REGISTRO_GUARDAS
+go
+
+/*==============================================================*/
+/* View: V_REGISTRO_REC_COM                                     */
+/*==============================================================*/
+create view V_REGISTRO_REC_COM as
+select
+   REGISTRO_REC_COM.REGISTRO_USO_RECURSO,
+   REGISTRO_REC_COM.NOMBRE_RECURSO,
+   REGISTRO_REC_COM.DOC_IDENTIDAD,
+   REGISTRO_REC_COM.FECHA_DE_RESERVA,
+   REGISTRO_REC_COM.DURACION_RESERVA,
+   REGISTRO_REC_COM.NUMERO_DE_USUARIOS
+from
+   REGISTRO_REC_COM
+go
+
+/*==============================================================*/
+/* View: V_REGISTRO_VISITAS                                     */
+/*==============================================================*/
+create view V_REGISTRO_VISITAS as
+select
+   REGISTRO_VISITAS.REGISTRO_VISITANTE,
+   REGISTRO_VISITAS.DOC_IDENTIDAD,
+   REGISTRO_VISITAS.PLACA,
+   REGISTRO_VISITAS.IDENTIFICACION,
+   REGISTRO_VISITAS.FECHA_INGRESO,
+   REGISTRO_VISITAS.FECHA_SALIDA,
+   REGISTRO_VISITAS.TIPO_VISITA
+from
+   REGISTRO_VISITAS
+go
+
+/*==============================================================*/
+/* View: V_TELEFONO                                             */
+/*==============================================================*/
+create view V_TELEFONO as
+select
+   TELEFONO.NUMERO_TELEFONO,
+   TELEFONO.DOC_IDENTIDAD
+from
+   TELEFONO
+go
+
+/*==============================================================*/
+/* View: V_TIPO_DE_APARTAMENTO                                  */
+/*==============================================================*/
+create view V_TIPO_DE_APARTAMENTO as
+select
+   TIPO_DE_APARTAMENTO.TIPO,
+   TIPO_DE_APARTAMENTO.AREA,
+   TIPO_DE_APARTAMENTO.HABITACIONES,
+   TIPO_DE_APARTAMENTO.BANOS
+from
+   TIPO_DE_APARTAMENTO
+go
+
+/*==============================================================*/
+/* View: V_TRANSACCION                                          */
+/*==============================================================*/
+create view V_TRANSACCION as
+select
+   TRANSACCION.ID_TRANSACCION,
+   TRANSACCION.IDENTIFICACION,
+   TRANSACCION.TIPO_TRANSACCION,
+   TRANSACCION.VALOR_TOTAL,
+   TRANSACCION.FECHA_TRANSACCION,
+   TRANSACCION.COMENTARIOS
+from
+   TRANSACCION
+go
+
+/*==============================================================*/
+/* View: V_VEHICULO                                             */
+/*==============================================================*/
+create view V_VEHICULO as
+select
+   VEHICULO.PLACA,
+   VEHICULO.PARQUEADERO_NUMERO,
+   VEHICULO.TIPO_VEHICULO,
+   VEHICULO.FECHA_ULTIMO_INGRESO,
+   VEHICULO.FECHA_ULTIMA_SALIDA,
+   VEHICULO.DESCRIPCION
+from
+   VEHICULO
+go
+
+alter table APARTAMENTO
+   add constraint FK_APARTAME_ES_PROPIE_PERSONA foreign key (DOC_IDENTIDAD)
+      references PERSONA (DOC_IDENTIDAD)
+go
+
+alter table APARTAMENTO
+   add constraint FK_APARTAME_TIPO_DE_A_TIPO_DE_ foreign key (TIPO)
+      references TIPO_DE_APARTAMENTO (TIPO)
+go
+
+alter table MASCOTA
+   add constraint FK_MASCOTA_ES_RESPON_APARTAME foreign key (IDENTIFICACION)
+      references APARTAMENTO (IDENTIFICACION)
+go
+
+alter table PARQUEADERO
+   add constraint FK_PARQUEAD_PARQUEADE_APARTAME foreign key (IDENTIFICACION)
+      references APARTAMENTO (IDENTIFICACION)
+go
+
+alter table PERSONA
+   add constraint FK_PERSONA_ES_RESIDE_APARTAME foreign key (APARTAMENTO_DE_RESIDENCIA)
+      references APARTAMENTO (IDENTIFICACION)
+go
+
+alter table PERSONA
+   add constraint FK_PERSONA_RESPONSAB_PERSONA foreign key (ADULTO_RESPONSABLE)
+      references PERSONA (DOC_IDENTIDAD)
+go
+
+alter table PRODUCTO
+   add constraint FK_PRODUCTO_OFRECE_PROVEEDO foreign key (ID_PROVEEDOR)
+      references PROVEEDOR (ID_PROVEEDOR)
+go
+
+alter table REGISTRO_VISITAS
+   add constraint FK_REGISTRO_SE_DIRIGE_APARTAME foreign key (IDENTIFICACION)
+      references APARTAMENTO (IDENTIFICACION)
+go
+
+alter table REGISTRO_VISITAS
+   add constraint FK_REGISTRO_TIENE_PERSONA foreign key (DOC_IDENTIDAD)
+      references PERSONA (DOC_IDENTIDAD)
+go
+
+alter table REGISTRO_VISITAS
+   add constraint FK_REGISTRO_VEHICULO__VEHICULO foreign key (PLACA)
+      references VEHICULO (PLACA)
+go
+
+alter table VEHICULO
+   add constraint FK_VEHICULO_ASIGNADO_PARQUEAD foreign key (PARQUEADERO_NUMERO)
+      references PARQUEADERO (PARQUEADERO_NUMERO)
+go
+
+
+create trigger REGISTRO_APARTAMENTO_AD on APARTAMENTO after delete as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('DELETE',CURRENT_USER,'APARTAMENTO',GETDATE())
+
+    return
+end
+go
+
+
+create trigger UPDATE_APARTAMENTO on APARTAMENTO after update as
+begin
+   declare
+      @numrows  int,
+      @numnull  int
+
+      select  @numrows = @@rowcount
+      if @numrows = 0
+         return
+
+      update APARTAMENTO set DIGITADOR = user_name(), MODIFICADO = getdate() where IDENTIFICACION in (select IDENTIFICACION from inserted)
+      
+      return
+end
+go
+
+
+create trigger REGISTRO_APARTAMENTO_AI on APARTAMENTO after insert as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('INSERT',CURRENT_USER,'APARTAMENTO',GETDATE())
+
+    return
+end
+go
+
+
+create trigger REGISTRO_APARTAMENTO_AU on APARTAMENTO after update as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('UPDATE',CURRENT_USER,'APARTAMENTO',GETDATE())
+
+    return
+end
+go
+
+
+create trigger REGISTRO_BICICLETERO_AD on BICICLETERO after delete as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('DELETE',CURRENT_USER,'BICICLETERO',GETDATE())
+
+    return
+end
+go
+
+
+create trigger UPDATE_BICICLETERO on BICICLETERO after update as
+begin
+   declare
+      @numrows  int,
+      @numnull  int
+
+      select  @numrows = @@rowcount
+      if @numrows = 0
+         return
+
+      update BICICLETERO set DIGITADOR = user_name(), MODIFICADO = getdate() where BICICLETERO_NUMERO in (select BICICLETERO_NUMERO from inserted)
+      
+      return
+end
+go
+
+
+create trigger REGISTRO_BICICLETERO_AI on BICICLETERO after insert as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('INSERT',CURRENT_USER,'BICICLETERO',GETDATE())
+
+    return
+end
+go
+
+
+create trigger REGISTRO_BICICLETERO_AU on BICICLETERO after update as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('UPDATE',CURRENT_USER,'BICICLETERO',GETDATE())
+
+    return
+end
+go
+
+
+create trigger REGISTRO_COMPRA_AD on COMPRA after delete as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('DELETE',CURRENT_USER,'COMPRA',GETDATE())
+
+    return
+end
+go
+
+
+create trigger REGISTRO_COMPRA_AI on COMPRA after insert as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('INSERT',CURRENT_USER,'COMPRA',GETDATE())
+
+    return
+end
+go
+
+
+create trigger REGISTRO_COMPRA_AU on COMPRA after update as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('UPDATE',CURRENT_USER,'COMPRA',GETDATE())
+
+    return
+end
+go
+
+
+create trigger REGISTRO_CONTRATISTA_AD on CONTRATISTA after delete as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('DELETE',CURRENT_USER,'CONTRATISTA',GETDATE())
+
+    return
+end
+go
+
+
+create trigger UPDATE_CONTRATISTA on CONTRATISTA after update as
+begin
+   declare
+      @numrows  int,
+      @numnull  int
+
+      select  @numrows = @@rowcount
+      if @numrows = 0
+         return
+
+      update CONTRATISTA set DIGITADOR = user_name(), MODIFICADO = getdate() where CONTRATISTA.DOC_IDENTIDAD in (select CONTRATISTA.DOC_IDENTIDAD from inserted)
+      
+      return
+end
+go
+
+
+create trigger REGISTRO_CONTRATISTA_AI on CONTRATISTA after insert as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('INSERT',CURRENT_USER,'CONTRATISTA',GETDATE())
+
+    return
+end
+go
+
+
+create trigger REGISTRO_CONTRATISTA_AU on CONTRATISTA after update as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('UPDATE',CURRENT_USER,'CONTRATISTA',GETDATE())
+
+    return
+end
+go
+
+
+create trigger REGISTRO_DEPOSITO_AD on DEPOSITO after delete as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('DELETE',CURRENT_USER,'DEPOSITO',GETDATE())
+
+    return
+end
+go
+
+
+create trigger UPDATE_DEPOSITO on DEPOSITO after update as
+begin
+   declare
+      @numrows  int,
+      @numnull  int
+
+      select  @numrows = @@rowcount
+      if @numrows = 0
+         return
+
+      update DEPOSITO set DIGITADOR = user_name(), MODIFICADO = getdate() where DEPOSITO_NUMERO in (select DEPOSITO_NUMERO from inserted)
+      
+      return
+end
+go
+
+
+create trigger REGISTRO_DEPOSITO_AI on DEPOSITO after insert as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('INSERT',CURRENT_USER,'DEPOSITO',GETDATE())
+
+    return
+end
+go
+
+
+create trigger REGISTRO_DEPOSITO_AU on DEPOSITO after update as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('UPDATE',CURRENT_USER,'DEPOSITO',GETDATE())
+
+    return
+end
+go
+
+
+create trigger REGISTRO_MASCOTA_AD on MASCOTA after delete as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('DELETE',CURRENT_USER,'MASCOTA',GETDATE())
+
+    return
+end
+go
+
+
+create trigger UPDATE_MASCOTA on MASCOTA after update as
+begin
+   declare
+      @numrows  int,
+      @numnull  int
+
+      select  @numrows = @@rowcount
+      if @numrows = 0
+         return
+
+      update MASCOTA set DIGITADOR = user_name(), MODIFICADO = getdate() where ID_MASCOTA in (select ID_MASCOTA from inserted)
+      
+      return
+end
+go
+
+
+create trigger REGISTRO_MASCOTA_AI on MASCOTA after insert as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('INSERT',CURRENT_USER,'MASCOTA',GETDATE())
+
+    return
+end
+go
+
+
+create trigger REGISTRO_MASCOTA_AU on MASCOTA after update as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('UPDATE',CURRENT_USER,'MASCOTA',GETDATE())
+
+    return
+end
+go
+
+
+create trigger REGISTRO_PARQUEADERO_AD on PARQUEADERO after delete as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('DELETE',CURRENT_USER,'PARQUEADERO',GETDATE())
+
+    return
+end
+go
+
+
+create trigger UPDATE_PARQUEADERO on PARQUEADERO after update as
+begin
+   declare
+      @numrows  int,
+      @numnull  int
+
+      select  @numrows = @@rowcount
+      if @numrows = 0
+         return
+
+      update PARQUEADERO set DIGITADOR = user_name(), MODIFICADO = getdate() where PARQUEADERO_NUMERO in (select PARQUEADERO_NUMERO from inserted)
+      
+      return
+end
+go
+
+
+create trigger REGISTRO_PARQUEADERO_AI on PARQUEADERO after insert as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('INSERT',CURRENT_USER,'PARQUEADERO',GETDATE())
+
+    return
+end
+go
+
+
+create trigger REGISTRO_PARQUEADERO_AU on PARQUEADERO after update as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('UPDATE',CURRENT_USER,'PARQUEADERO',GETDATE())
+
+    return
+end
+go
+
+
+create trigger REGISTRO_PERSONA_AI on PERSONA after insert as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('INSERT',CURRENT_USER,'PERSONA',GETDATE())
+
+    return
+end
+go
+
+
+create trigger UPDATE_PERSONA on PERSONA after update as
+begin
+   declare
+      @numrows  int,
+      @numnull  int
+
+      select  @numrows = @@rowcount
+      if @numrows = 0
+         return
+
+      update PERSONA set DIGITADOR = user_name(), MODIFICADO = getdate() where DOC_IDENTIDAD in (select DOC_IDENTIDAD from inserted)
+      
+      return
+end
+go
+
+
+create trigger REGISTRO_PERSONA_AU on PERSONA after update as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('UPDATE',CURRENT_USER,'PERSONA',GETDATE())
+
+    return
+end
+go
+
+
+create trigger REGISTRO_PERSONA_AD on PERSONA after delete as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('DELETE',CURRENT_USER,'PERSONA',GETDATE())
+
+    return
+end
+go
+
+
+create trigger REGISTRO_PRODUCTO_AD on PRODUCTO after delete as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('DELETE',CURRENT_USER,'PRODUCTO',GETDATE())
+
+    return
+end
+go
+
+
+create trigger UPDATE_PRODUCTO on PRODUCTO after update as
+begin
+   declare
+      @numrows  int,
+      @numnull  int
+
+      select  @numrows = @@rowcount
+      if @numrows = 0
+         return
+
+      update PRODUCTO set DIGITADOR = user_name(), MODIFICADO = getdate() where ID_PRODUCTO in (select ID_PRODUCTO from inserted)
+      
+      return
+end
+go
+
+
+create trigger REGISTRO_PRODUCTO_AI on PRODUCTO after insert as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('INSERT',CURRENT_USER,'PRODUCTO',GETDATE())
+
+    return
+end
+go
+
+
+create trigger REGISTRO_PRODUCTO_AU on PRODUCTO after update as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('UPDATE',CURRENT_USER,'PRODUCTO',GETDATE())
+
+    return
+end
+go
+
+
+create trigger REGISTRO_PROVEEDOR_AD on PROVEEDOR after delete as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('DELETE',CURRENT_USER,'PROVEEDOR',GETDATE())
+
+    return
+end
+go
+
+
+create trigger UPDATE_PROVEEDOR on PROVEEDOR after update as
+begin
+   declare
+      @numrows  int,
+      @numnull  int
+
+      select  @numrows = @@rowcount
+      if @numrows = 0
+         return
+
+      update PROVEEDOR set DIGITADOR = user_name(), MODIFICADO = getdate() where ID_PROVEEDOR in (select ID_PROVEEDOR from inserted)
+      
+      return
+end
+go
+
+
+create trigger REGISTRO_PROVEEDOR_AI on PROVEEDOR after insert as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('INSERT',CURRENT_USER,'PROVEEDOR',GETDATE())
+
+    return
+end
+go
+
+
+create trigger REGISTRO_PROVEEDOR_AU on PROVEEDOR after update as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('UPDATE',CURRENT_USER,'PROVEEDOR',GETDATE())
+
+    return
+end
+go
+
+
+create trigger REGISTRO_REC_COMUNAL_AD on RECURSO_COMUNAL after delete as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('DELETE',CURRENT_USER,'RECURSO_COMUNAL',GETDATE())
+
+    return
+end
+go
+
+
+create trigger UPDATE_REC_COMUNAL on RECURSO_COMUNAL after update as
+begin
+   declare
+      @numrows  int,
+      @numnull  int
+
+      select  @numrows = @@rowcount
+      if @numrows = 0
+         return
+
+      update RECURSO_COMUNAL set DIGITADOR = user_name(), MODIFICADO = getdate() where NOMBRE_RECURSO in (select NOMBRE_RECURSO from inserted)
+      
+      return
+end
+go
+
+
+create trigger REGISTRO_REC_COMUNAL_AI on RECURSO_COMUNAL after insert as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('INSERT',CURRENT_USER,'RECURSO_COMUNAL',GETDATE())
+
+    return
+end
+go
+
+
+create trigger REGISTRO_REC_COMUNAL_AU on RECURSO_COMUNAL after update as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('UPDATE',CURRENT_USER,'RECURSO_COMUNAL',GETDATE())
+
+    return
+end
+go
+
+
+create trigger REGISTRO_REG_GUARDAS_AD on REGISTRO_GUARDAS after delete as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('DELETE',CURRENT_USER,'REGISTRO_GUARDAS',GETDATE())
+
+    return
+end
+go
+
+
+create trigger UPDATE_REG_GUARDAS on REGISTRO_GUARDAS after update as
+begin
+   declare
+      @numrows  int,
+      @numnull  int
+
+      select  @numrows = @@rowcount
+      if @numrows = 0
+         return
+
+      update REGISTRO_GUARDAS set DIGITADOR = user_name(), MODIFICADO = getdate() where REGISTRO_GUARDA in (select REGISTRO_GUARDA from inserted)
+      
+      return
+end
+go
+
+
+create trigger REGISTRO_REG_GUARDAS_AI on REGISTRO_GUARDAS after insert as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('INSERT',CURRENT_USER,'REGISTRO_GUARDAS',GETDATE())
+
+    return
+end
+go
+
+
+create trigger REGISTRO_REG_GUARDAS_AU on REGISTRO_GUARDAS after update as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('UPDATE',CURRENT_USER,'REGISTRO_GUARDAS',GETDATE())
+
+    return
+end
+go
+
+
+create trigger REGISTRO_REG_REC_AD on REGISTRO_REC_COM after delete as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('DELETE',CURRENT_USER,'REGISTRO_REC_COM',GETDATE())
+
+    return
+end
+go
+
+
+create trigger UPDATE_REG_REC on REGISTRO_REC_COM after update as
+begin
+   declare
+      @numrows  int,
+      @numnull  int
+
+      select  @numrows = @@rowcount
+      if @numrows = 0
+         return
+
+      update REGISTRO_REC_COM set DIGITADOR = user_name(), MODIFICADO = getdate() where REGISTRO_USO_RECURSO in (select REGISTRO_USO_RECURSO from inserted)
+      
+      return
+end
+go
+
+
+create trigger REGISTRO_REG_REC_AI on REGISTRO_REC_COM after insert as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('INSERT',CURRENT_USER,'REGISTRO_REC_COM',GETDATE())
+
+    return
+end
+go
+
+
+create trigger REGISTRO_REG_REC_AU on REGISTRO_REC_COM after update as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('UPDATE',CURRENT_USER,'REGISTRO_REC_COM',GETDATE())
+
+    return
+end
+go
+
+
+create trigger REGISTRO_VISITAS_AD on REGISTRO_VISITAS after delete as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('DELETE',CURRENT_USER,'REGISTRO_VISITAS',GETDATE())
+
+    return
+end
+go
+
+
+create trigger UPDATE_VISITAS on REGISTRO_VISITAS after update as
+begin
+   declare
+      @numrows  int,
+      @numnull  int
+
+      select  @numrows = @@rowcount
+      if @numrows = 0
+         return
+
+      update REGISTRO_VISITAS set DIGITADOR = user_name(), MODIFICADO = getdate() where REGISTRO_VISITANTE in (select REGISTRO_VISITANTE from inserted)
+      
+      return
+end
+go
+
+
+create trigger REGISTRO_VISITAS_AI on REGISTRO_VISITAS after insert as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('INSERT',CURRENT_USER,'REGISTRO_VISITAS',GETDATE())
+
+    return
+end
+go
+
+
+create trigger REGISTRO_VISITAS_AU on REGISTRO_VISITAS after update as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('UPDATE',CURRENT_USER,'REGISTRO_VISITAS',GETDATE())
+
+    return
+end
+go
+
+
+create trigger REGISTRO_TELEFONO_AD on TELEFONO after delete as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('DELETE',CURRENT_USER,'TELEFONO',GETDATE())
+
+    return
+end
+go
+
+
+create trigger REGISTRO_TELEFONO_AI on TELEFONO after insert as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('INSERT',CURRENT_USER,'TELEFONO',GETDATE())
+
+    return
+end
+go
+
+
+create trigger REGISTRO_TELEFONO_AU on TELEFONO after update as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('UPDATE',CURRENT_USER,'TELEFONO',GETDATE())
+
+    return
+end
+go
+
+
+create trigger REGISTRO_TIPO_APTO_AD on TIPO_DE_APARTAMENTO after delete as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('DELETE',CURRENT_USER,'TIPO_DE_APARTAMENTO',GETDATE())
+
+    return
+end
+go
+
+
+create trigger UPDATE_TIPO_APTO on TIPO_DE_APARTAMENTO after update as
+begin
+   declare
+      @numrows  int,
+      @numnull  int
+
+      select  @numrows = @@rowcount
+      if @numrows = 0
+         return
+
+      update TIPO_DE_APARTAMENTO set DIGITADOR = user_name(), MODIFICADO = getdate() where TIPO in (select TIPO from inserted)
+      
+      return
+end
+go
+
+
+create trigger REGISTRO_TIPO_APTO_AI on TIPO_DE_APARTAMENTO after insert as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('INSERT',CURRENT_USER,'TIPO_DE_APARTAMENTO',GETDATE())
+
+    return
+end
+go
+
+
+create trigger REGISTRO_TIPO_APTO_AU on TIPO_DE_APARTAMENTO after update as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('UPDATE',CURRENT_USER,'TIPO_DE_APARTAMENTO',GETDATE())
+
+    return
+end
+go
+
+
+create trigger REGISTRO_TRANSACCION_AD on TRANSACCION after delete as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('DELETE',CURRENT_USER,'TRANSACCION',GETDATE())
+
+    return
+end
+go
+
+
+create trigger UPDATE_TRANSACCION on TRANSACCION after update as
+begin
+   declare
+      @numrows  int,
+      @numnull  int
+
+      select  @numrows = @@rowcount
+      if @numrows = 0
+         return
+
+      update TRANSACCION set DIGITADOR = user_name(), MODIFICADO = getdate() where ID_TRANSACCION in (select ID_TRANSACCION from inserted)
+      
+      return
+end
+go
+
+
+create trigger REGISTRO_TRANSACCION_AI on TRANSACCION after insert as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('INSERT',CURRENT_USER,'TRANSACCION',GETDATE())
+
+    return
+end
+go
+
+
+create trigger REGISTRO_TRANSACCION_AU on TRANSACCION after update as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('UPDATE',CURRENT_USER,'TRANSACCION',GETDATE())
+
+    return
+end
+go
+
+
+create trigger REGISTRO_VEHICULO_AD on VEHICULO after delete as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('DELETE',CURRENT_USER,'VEHICULO',GETDATE())
+
+    return
+end
+go
+
+
+create trigger UPDATE_VEHICULO on VEHICULO after update as
+begin
+   declare
+      @numrows  int,
+      @numnull  int
+
+      select  @numrows = @@rowcount
+      if @numrows = 0
+         return
+
+      update VEHICULO set DIGITADOR = user_name(), MODIFICADO = getdate() where PLACA in (select PLACA from inserted)
+      
+      return
+end
+go
+
+
+create trigger REGISTRO_VEHICULO_AI on VEHICULO after insert as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('INSERT',CURRENT_USER,'VEHICULO',GETDATE())
+
+    return
+end
+go
+
+
+create trigger REGISTRO_VEHICULO_AU on VEHICULO after update as
+begin
+    declare
+       @numrows  int,
+       @numnull  int
+
+    select  @numrows = @@rowcount
+    if @numrows = 0
+       return
+
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('UPDATE',CURRENT_USER,'VEHICULO',GETDATE())
+
+    return
+end
+go
