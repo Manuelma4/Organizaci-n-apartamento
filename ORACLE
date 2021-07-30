@@ -1,0 +1,1657 @@
+/*==============================================================*/
+/* DBMS name:      ORACLE Version 12c                           */
+/* Created on:     29/07/2021 05:30:56                          */
+/*==============================================================*/
+
+
+
+-- Type package declaration
+create or replace package PDTypes  
+as
+    TYPE ref_cursor IS REF CURSOR;
+end;
+
+-- Integrity package declaration
+create or replace package IntegrityPackage AS
+ procedure InitNestLevel;
+ function GetNestLevel return number;
+ procedure NextNestLevel;
+ procedure PreviousNestLevel;
+ end IntegrityPackage;
+/
+
+-- Integrity package definition
+create or replace package body IntegrityPackage AS
+ NestLevel number;
+
+-- Procedure to initialize the trigger nest level
+ procedure InitNestLevel is
+ begin
+ NestLevel := 0;
+ end;
+
+
+-- Function to return the trigger nest level
+ function GetNestLevel return number is
+ begin
+ if NestLevel is null then
+     NestLevel := 0;
+ end if;
+ return(NestLevel);
+ end;
+
+-- Procedure to increase the trigger nest level
+ procedure NextNestLevel is
+ begin
+ if NestLevel is null then
+     NestLevel := 0;
+ end if;
+ NestLevel := NestLevel + 1;
+ end;
+
+-- Procedure to decrease the trigger nest level
+ procedure PreviousNestLevel is
+ begin
+ NestLevel := NestLevel - 1;
+ end;
+
+ end IntegrityPackage;
+/
+
+
+drop trigger REGISTRO_APARTAMENTO_AI
+/
+
+drop trigger REGISTRO_APARTAMENTO_AD
+/
+
+drop trigger REGISTRO_APARTAMENTO_AU
+/
+
+drop trigger REGISTRO_BICICLETERO_AD
+/
+
+drop trigger REGISTRO_BICICLETERO_AI
+/
+
+drop trigger REGISTRO_BICICLETERO_AU
+/
+
+drop trigger REGISTRO_COMPRA_AD
+/
+
+drop trigger REGISTRO_COMPRA_AI
+/
+
+drop trigger REGISTRO_COMPRA_AU
+/
+
+drop trigger REGISTRO_CONTRATISTA_AD
+/
+
+drop trigger REGISTRO_CONTRATISTA_AI
+/
+
+drop trigger REGISTRO_CONTRATISTA_AU
+/
+
+drop trigger REGISTRO_DEPOSITO_AD
+/
+
+drop trigger REGISTRO_DEPOSITO_AI
+/
+
+drop trigger REGISTRO_DEPOSITO_AU
+/
+
+drop trigger REGISTRO_MASCOTA_AD
+/
+
+drop trigger REGISTRO_MASCOTA_AI
+/
+
+drop trigger REGISTRO_MASCOTA_AU
+/
+
+drop trigger REGISTRO_PARQUEADERO_AD
+/
+
+drop trigger REGISTRO_PARQUEADERO_AI
+/
+
+drop trigger REGISTRO_PARQUEADERO_AU
+/
+
+drop trigger REGISTRO_PERSONA_AD
+/
+
+drop trigger REGISTRO_PERSONA_AI
+/
+
+drop trigger REGISTRO_PERSONA_AU
+/
+
+drop trigger REGISTRO_PRODUCTO_AD
+/
+
+drop trigger REGISTRO_PRODUCTO_AI
+/
+
+drop trigger REGISTRO_PRODUCTO_AU
+/
+
+drop trigger REGISTRO_PROVEEDOR_AD
+/
+
+drop trigger REGISTRO_PROVEEDOR_AI
+/
+
+drop trigger REGISTRO_PROVEEDOR_AU
+/
+
+drop trigger REGISTRO_REC_COM_AD
+/
+
+drop trigger REGISTRO_REC_COM_AI
+/
+
+drop trigger REGISTRO_REC_COM_AU
+/
+
+drop trigger REGISTRO_REG_GUARD_AD
+/
+
+drop trigger REGISTRO_REG_GUARD_AI
+/
+
+drop trigger REGISTRO_REG_GUARD_AU
+/
+
+drop trigger REGISTRO_REG_REC_COM_AD
+/
+
+drop trigger REGISTRO_REG_REC_COM_AI
+/
+
+drop trigger REGISTRO_REG_REC_COM_AU
+/
+
+drop trigger REGISTRO_REG_VISITAS_AD
+/
+
+drop trigger REGISTRO_REG_VISITAS_AI
+/
+
+drop trigger REGISTRO_REG_VISITAS_AU
+/
+
+drop trigger REGISTRO_TELEFONO_AD
+/
+
+drop trigger REGISTRO_TELEFONO_AI
+/
+
+drop trigger REGISTRO_TELEFONO_AU
+/
+
+drop trigger REGISTRO_TIPO_APTO_AD
+/
+
+drop trigger REGISTRO_TIPO_APTO_AI
+/
+
+drop trigger REGISTRO_TIPO_APTO_AU
+/
+
+drop trigger REGISTRO_TRANSACCION_AD
+/
+
+drop trigger REGISTRO_TRANSACCION_AI
+/
+
+drop trigger REGISTRO_TRANSACCION_AU
+/
+
+drop trigger REGISTRO_VEHICULO_AD
+/
+
+drop trigger REGISTRO_VEHICULO_AI
+/
+
+drop trigger REGISTRO_VEHICULO_AU
+/
+
+alter table APARTAMENTO
+   drop constraint FK_APARTAME_ES_PROPIE_PERSONA
+/
+
+alter table APARTAMENTO
+   drop constraint FK_APARTAME_TIPO_DE_A_TIPO_DE_
+/
+
+alter table MASCOTA
+   drop constraint FK_MASCOTA_ES_RESPON_APARTAME
+/
+
+alter table PARQUEADERO
+   drop constraint FK_PARQUEAD_PARQUEADE_APARTAME
+/
+
+alter table PERSONA
+   drop constraint FK_PERSONA_ES_RESIDE_APARTAME
+/
+
+alter table PERSONA
+   drop constraint FK_PERSONA_RESPONSAB_PERSONA
+/
+
+alter table PRODUCTO
+   drop constraint FK_PRODUCTO_OFRECE_PROVEEDO
+/
+
+alter table REGISTRO_VISITAS
+   drop constraint FK_REGISTRO_SE_DIRIGE_APARTAME
+/
+
+alter table REGISTRO_VISITAS
+   drop constraint FK_REGISTRO_TIENE_PERSONA
+/
+
+alter table REGISTRO_VISITAS
+   drop constraint FK_REGISTRO_VEHICULO__VEHICULO
+/
+
+alter table VEHICULO
+   drop constraint FK_VEHICULO_ASIGNADO_PARQUEAD
+/
+
+drop view V_VEHICULO
+/
+
+drop view V_TRANSACCION
+/
+
+drop view V_TIPO_DE_APARTAMENTO
+/
+
+drop view V_TELEFONO
+/
+
+drop view V_REGISTRO_VISITAS
+/
+
+drop view V_REGISTRO_REC_COM
+/
+
+drop view V_REGISTRO_GUARDAS
+/
+
+drop view V_REGISTRO_DE_ACCIONES
+/
+
+drop view V_RECURSO_COMUNAL
+/
+
+drop view V_PROVEEDOR
+/
+
+drop view V_PRODUCTO
+/
+
+drop view V_PERSONA
+/
+
+drop view V_PARQUEADERO
+/
+
+drop view V_MASCOTA
+/
+
+drop view V_DEPOSITO
+/
+
+drop view V_CONTRATISTA
+/
+
+drop view V_COMPRA
+/
+
+drop view V_BICICLETERO
+/
+
+drop view V_APARTAMENTO
+/
+
+drop index TIPO_DE_APARTAMENTO_FK
+/
+
+drop index ES_PROPIETARIO_FK
+/
+
+drop table APARTAMENTO cascade constraints
+/
+
+drop index BICICLETERO_ASIGNADO_FK
+/
+
+drop table BICICLETERO cascade constraints
+/
+
+drop index COMPRAS2_FK
+/
+
+drop index COMPRAS_FK
+/
+
+drop table COMPRA cascade constraints
+/
+
+drop table CONTRATISTA cascade constraints
+/
+
+drop index DEPOSITO_ASIGNADO_FK
+/
+
+drop table DEPOSITO cascade constraints
+/
+
+drop index ES_RESPONSABLE_FK
+/
+
+drop table MASCOTA cascade constraints
+/
+
+drop index TIENE_FK
+/
+
+drop table PARQUEADERO cascade constraints
+/
+
+drop index RESPONSABLE_DE_MENOR_FK
+/
+
+drop index ES_RESIDENTE_FK
+/
+
+drop table PERSONA cascade constraints
+/
+
+drop index OFRECE_FK
+/
+
+drop index OFRECE_2_FK
+/
+
+drop table PRODUCTO cascade constraints
+/
+
+drop table PROVEEDOR cascade constraints
+/
+
+drop table RECURSO_COMUNAL cascade constraints
+/
+
+drop table REGISTRO_DE_ACCIONES cascade constraints
+/
+
+drop index ACTIVIDAD_GUARDAS_FK
+/
+
+drop table REGISTRO_GUARDAS cascade constraints
+/
+
+drop index UTILIZA_RECURSOS_FK
+/
+
+drop index RELATIONSHIP_15_FK
+/
+
+drop table REGISTRO_REC_COM cascade constraints
+/
+
+drop index ES_VISITANTE_FK
+/
+
+drop table REGISTRO_VISITAS cascade constraints
+/
+
+drop index TIENE_TELEFONOS_FK
+/
+
+drop table TELEFONO cascade constraints
+/
+
+drop table TIPO_DE_APARTAMENTO cascade constraints
+/
+
+drop index RECAUDO_APARTAMENTOS_FK
+/
+
+drop table TRANSACCION cascade constraints
+/
+
+drop index ASIGNADO_FK
+/
+
+drop table VEHICULO cascade constraints
+/
+
+/*==============================================================*/
+/* Table: APARTAMENTO                                           */
+/*==============================================================*/
+create table APARTAMENTO (
+   IDENTIFICACION       VARCHAR2(6)           not null,
+   DOC_IDENTIDAD        VARCHAR2(15),
+   TIPO                 VARCHAR2(1)           not null,
+   COMPROMISOS          INTEGER               not null,
+   CHIP                 VARCHAR2(15)          not null,
+   MATRICULA            VARCHAR2(15)          not null,
+   COEFICIENTE          NUMBER                not null,
+   DIGITADOR            VARCHAR2(15)         default USER  not null,
+   MODIFICADO           DATE                 default SYSDATE  not null,
+   constraint PK_APARTAMENTO primary key (IDENTIFICACION)
+)
+/
+
+/*==============================================================*/
+/* Index: ES_PROPIETARIO_FK                                     */
+/*==============================================================*/
+create index ES_PROPIETARIO_FK on APARTAMENTO (
+   DOC_IDENTIDAD ASC
+)
+/
+
+/*==============================================================*/
+/* Index: TIPO_DE_APARTAMENTO_FK                                */
+/*==============================================================*/
+create index TIPO_DE_APARTAMENTO_FK on APARTAMENTO (
+   TIPO ASC
+)
+/
+
+/*==============================================================*/
+/* Table: BICICLETERO                                           */
+/*==============================================================*/
+create table BICICLETERO (
+   BICICLETERO_NUMERO   INTEGER               not null,
+   IDENTIFICACION       VARCHAR2(6),
+   BICICLETERO_OTROS    VARCHAR2(500),
+   DIGITADOR            VARCHAR2(15)         default USER  not null,
+   MODIFICADO           DATE                 default SYSDATE  not null,
+   constraint PK_BICICLETERO primary key (BICICLETERO_NUMERO)
+)
+/
+
+/*==============================================================*/
+/* Index: BICICLETERO_ASIGNADO_FK                               */
+/*==============================================================*/
+create index BICICLETERO_ASIGNADO_FK on BICICLETERO (
+   IDENTIFICACION ASC
+)
+/
+
+/*==============================================================*/
+/* Table: COMPRA                                                */
+/*==============================================================*/
+create table COMPRA (
+   ID_PRODUCTO          INTEGER               not null,
+   ID_TRANSACCION       INTEGER               not null,
+   CANTIDAD             NUMBER               default 1  not null,
+   DIGITADOR            VARCHAR2(15)         default USER  not null,
+   MODIFICADO           DATE                 default SYSDATE  not null,
+   constraint PK_COMPRA primary key (ID_PRODUCTO, ID_TRANSACCION)
+)
+/
+
+/*==============================================================*/
+/* Index: COMPRAS_FK                                            */
+/*==============================================================*/
+create index COMPRAS_FK on COMPRA (
+   ID_PRODUCTO ASC
+)
+/
+
+/*==============================================================*/
+/* Index: COMPRAS2_FK                                           */
+/*==============================================================*/
+create index COMPRAS2_FK on COMPRA (
+   ID_TRANSACCION ASC
+)
+/
+
+/*==============================================================*/
+/* Table: CONTRATISTA                                           */
+/*==============================================================*/
+create table CONTRATISTA (
+   DOC_IDENTIDAD        VARCHAR2(15)          not null,
+   CONTRATO_ACTIVO      SMALLINT              not null,
+   CARGO                VARCHAR2(20)          not null,
+   APTITUD              INTEGER               not null,
+   OBSERVACIONES        VARCHAR2(300),
+   PRIMER_CONTRATO      SMALLINT              not null,
+   DIGITADOR            VARCHAR2(15)         default USER  not null,
+   MODIFICADO           DATE                 default SYSDATE  not null,
+   constraint PK_CONTRATISTA primary key (DOC_IDENTIDAD)
+)
+/
+
+/*==============================================================*/
+/* Table: DEPOSITO                                              */
+/*==============================================================*/
+create table DEPOSITO (
+   DEPOSITO_NUMERO      INTEGER               not null,
+   IDENTIFICACION       VARCHAR2(6),
+   DEPOSITO_OTROS       VARCHAR2(500),
+   DIGITADOR            VARCHAR2(15)         default USER  not null,
+   MODIFICADO           DATE                 default SYSDATE  not null,
+   constraint PK_DEPOSITO primary key (DEPOSITO_NUMERO)
+)
+/
+
+/*==============================================================*/
+/* Index: DEPOSITO_ASIGNADO_FK                                  */
+/*==============================================================*/
+create index DEPOSITO_ASIGNADO_FK on DEPOSITO (
+   IDENTIFICACION ASC
+)
+/
+
+/*==============================================================*/
+/* Table: MASCOTA                                               */
+/*==============================================================*/
+create table MASCOTA (
+   ID_MASCOTA           INTEGER               not null,
+   IDENTIFICACION       VARCHAR2(6)           not null,
+   ESPECIE              VARCHAR2(30)          not null,
+   RAZA                 VARCHAR2(30),
+   DIGITADOR            VARCHAR2(15)         default USER  not null,
+   MODIFICADO           DATE                 default SYSDATE  not null,
+   constraint PK_MASCOTA primary key (ID_MASCOTA)
+)
+/
+
+/*==============================================================*/
+/* Index: ES_RESPONSABLE_FK                                     */
+/*==============================================================*/
+create index ES_RESPONSABLE_FK on MASCOTA (
+   IDENTIFICACION ASC
+)
+/
+
+/*==============================================================*/
+/* Table: PARQUEADERO                                           */
+/*==============================================================*/
+create table PARQUEADERO (
+   PARQUEADERO_NUMERO   VARCHAR2(5)           not null,
+   IDENTIFICACION       VARCHAR2(6),
+   TIPO_PARQUEADERO     VARCHAR2(5)           not null,
+   OTROS                VARCHAR2(500),
+   DIGITADOR            VARCHAR2(15)         default USER  not null,
+   MODIFICADO           DATE                 default SYSDATE  not null,
+   constraint PK_PARQUEADERO primary key (PARQUEADERO_NUMERO)
+)
+/
+
+/*==============================================================*/
+/* Index: TIENE_FK                                              */
+/*==============================================================*/
+create index TIENE_FK on PARQUEADERO (
+   IDENTIFICACION ASC
+)
+/
+
+/*==============================================================*/
+/* Table: PERSONA                                               */
+/*==============================================================*/
+create table PERSONA (
+   DOC_IDENTIDAD        VARCHAR2(15)          not null,
+   NOMBRE               VARCHAR2(300)         not null,
+   FECHA_NACIMIENTO     DATE                  not null,
+   ESTADO_CIVIL         VARCHAR2(15)          not null,
+   GENERO               VARCHAR2(1)           not null,
+   LUGAR_DE_NACIMIENTO  CHAR(7)               not null,
+   DIRECCION            VARCHAR2(150)         not null,
+   PERSONA_DE_CONTACTO  VARCHAR2(350)         not null,
+   INFO_SANGRE          VARCHAR2(3),
+   CORREO               VARCHAR2(100),
+   APARTAMENTO_DE_RESIDENCIA VARCHAR2(6),
+   ADULTO_RESPONSABLE   VARCHAR2(15),
+   CARGO_EMPLEADO       VARCHAR2(30),
+   TAG                  VARCHAR2(20),
+   INFO_LABORAL         VARCHAR2(300),
+   DIGITADOR            VARCHAR2(15)         default USER  not null,
+   MODIFICADO           DATE                 default SYSDATE  not null,
+   constraint PK_PERSONA primary key (DOC_IDENTIDAD)
+)
+/
+
+/*==============================================================*/
+/* Index: ES_RESIDENTE_FK                                       */
+/*==============================================================*/
+create index ES_RESIDENTE_FK on PERSONA (
+   APARTAMENTO_DE_RESIDENCIA ASC
+)
+/
+
+/*==============================================================*/
+/* Index: RESPONSABLE_DE_MENOR_FK                               */
+/*==============================================================*/
+create index RESPONSABLE_DE_MENOR_FK on PERSONA (
+   ADULTO_RESPONSABLE ASC
+)
+/
+
+/*==============================================================*/
+/* Table: PRODUCTO                                              */
+/*==============================================================*/
+create table PRODUCTO (
+   ID_PRODUCTO          INTEGER               not null,
+   ID_PROVEEDOR         INTEGER,
+   DOC_IDENTIDAD        VARCHAR2(15),
+   NOMBRE               VARCHAR2(300)         not null,
+   UNIDAD_DE_MERCADEO   VARCHAR2(50)          not null,
+   PRECIO_UNITARIO      INTEGER               not null,
+   INVENTARIO           NUMBER,
+   DIGITADOR            VARCHAR2(15)         default USER  not null,
+   MODIFICADO           DATE                 default SYSDATE  not null,
+   constraint PK_PRODUCTO primary key (ID_PRODUCTO)
+)
+/
+
+/*==============================================================*/
+/* Index: OFRECE_2_FK                                           */
+/*==============================================================*/
+create index OFRECE_2_FK on PRODUCTO (
+   DOC_IDENTIDAD ASC
+)
+/
+
+/*==============================================================*/
+/* Index: OFRECE_FK                                             */
+/*==============================================================*/
+create index OFRECE_FK on PRODUCTO (
+   ID_PROVEEDOR ASC
+)
+/
+
+/*==============================================================*/
+/* Table: PROVEEDOR                                             */
+/*==============================================================*/
+create table PROVEEDOR (
+   ID_PROVEEDOR         INTEGER               not null,
+   NOMBRE               VARCHAR2(300)         not null,
+   NIT                  VARCHAR2(20)          not null,
+   CONMUTADOR           VARCHAR2(15)          not null,
+   DIRECCION            VARCHAR2(150)         not null,
+   REP_LEGAL            VARCHAR2(300)         not null,
+   PERSONA_DE_CONTACTO  VARCHAR2(350)         not null,
+   DIGITADOR            VARCHAR2(15)         default USER  not null,
+   MODIFICADO           DATE                 default SYSDATE  not null,
+   constraint PK_PROVEEDOR primary key (ID_PROVEEDOR)
+)
+/
+
+/*==============================================================*/
+/* Table: RECURSO_COMUNAL                                       */
+/*==============================================================*/
+create table RECURSO_COMUNAL (
+   NOMBRE_RECURSO       VARCHAR2(100)         not null,
+   DESCRIPCION_RECURSO  VARCHAR2(1024)        not null,
+   CAPACIDAD            INTEGER,
+   HORA_APERTURA        DATE                  not null,
+   HORA_CIERRE          DATE                  not null,
+   COSTO_HR             INTEGER               not null,
+   PERMITE_VISITAS      SMALLINT              not null,
+   DIGITADOR            VARCHAR2(15)         default USER  not null,
+   MODIFICADO           DATE                 default SYSDATE  not null,
+   constraint PK_RECURSO_COMUNAL primary key (NOMBRE_RECURSO)
+)
+/
+
+/*==============================================================*/
+/* Table: REGISTRO_DE_ACCIONES                                  */
+/*==============================================================*/
+create table REGISTRO_DE_ACCIONES (
+   REGISTRO_NUMERO      INTEGER             
+      generated as identity ( start with 1 nocycle noorder)  not null,
+   ACCION               VARCHAR2(20)          not null,
+   USUARIO              VARCHAR2(15)          not null,
+   OBJETO               VARCHAR2(100)         not null,
+   FECHA                DATE                  not null,
+   constraint PK_REGISTRO_DE_ACCIONES primary key (REGISTRO_NUMERO)
+)
+/
+
+/*==============================================================*/
+/* Table: REGISTRO_GUARDAS                                      */
+/*==============================================================*/
+create table REGISTRO_GUARDAS (
+   REGISTRO_GUARDA      INTEGER             
+      generated as identity ( start with 1 nocycle noorder)  not null,
+   DOC_IDENTIDAD        VARCHAR2(15)          not null,
+   TURNO                CHAR(9)               not null,
+   PUESTO               VARCHAR2(50)          not null,
+   FECHA                DATE                  not null,
+   DIGITADOR            VARCHAR2(15)         default USER  not null,
+   MODIFICADO           DATE                 default SYSDATE  not null,
+   constraint PK_REGISTRO_GUARDAS primary key (REGISTRO_GUARDA)
+)
+/
+
+/*==============================================================*/
+/* Index: ACTIVIDAD_GUARDAS_FK                                  */
+/*==============================================================*/
+create index ACTIVIDAD_GUARDAS_FK on REGISTRO_GUARDAS (
+   DOC_IDENTIDAD ASC
+)
+/
+
+/*==============================================================*/
+/* Table: REGISTRO_REC_COM                                      */
+/*==============================================================*/
+create table REGISTRO_REC_COM (
+   REGISTRO_USO_RECURSO INTEGER             
+      generated as identity ( start with 1 nocycle noorder)  not null,
+   NOMBRE_RECURSO       VARCHAR2(100)         not null,
+   DOC_IDENTIDAD        VARCHAR2(15)          not null,
+   FECHA_DE_RESERVA     DATE                  not null,
+   DURACION_RESERVA     INTERVAL DAY TO SECOND  not null,
+   NUMERO_DE_USUARIOS   INTEGER              default 1  not null,
+   DIGITADOR            VARCHAR2(15)         default USER  not null,
+   MODIFICADO           DATE                 default SYSDATE  not null,
+   constraint PK_REGISTRO_REC_COM primary key (REGISTRO_USO_RECURSO)
+)
+/
+
+/*==============================================================*/
+/* Index: RELATIONSHIP_15_FK                                    */
+/*==============================================================*/
+create index RELATIONSHIP_15_FK on REGISTRO_REC_COM (
+   NOMBRE_RECURSO ASC
+)
+/
+
+/*==============================================================*/
+/* Index: UTILIZA_RECURSOS_FK                                   */
+/*==============================================================*/
+create index UTILIZA_RECURSOS_FK on REGISTRO_REC_COM (
+   DOC_IDENTIDAD ASC
+)
+/
+
+/*==============================================================*/
+/* Table: REGISTRO_VISITAS                                      */
+/*==============================================================*/
+create table REGISTRO_VISITAS (
+   REGISTRO_VISITANTE   INTEGER             
+      generated as identity ( start with 1 nocycle noorder)  not null,
+   DOC_IDENTIDAD        VARCHAR2(15)          not null,
+   PLACA                VARCHAR2(6),
+   IDENTIFICACION       VARCHAR2(6),
+   FECHA_INGRESO        DATE                  not null,
+   FECHA_SALIDA         DATE,
+   TIPO_VISITA          VARCHAR2(15)          not null,
+   DIGITADOR            VARCHAR2(15)         default USER  not null,
+   MODIFICADO           DATE                 default SYSDATE  not null,
+   constraint PK_REGISTRO_VISITAS primary key (REGISTRO_VISITANTE)
+)
+/
+
+/*==============================================================*/
+/* Index: ES_VISITANTE_FK                                       */
+/*==============================================================*/
+create index ES_VISITANTE_FK on REGISTRO_VISITAS (
+   DOC_IDENTIDAD ASC
+)
+/
+
+/*==============================================================*/
+/* Table: TELEFONO                                              */
+/*==============================================================*/
+create table TELEFONO (
+   NUMERO_TELEFONO      VARCHAR2(15)          not null,
+   DOC_IDENTIDAD        VARCHAR2(15)          not null,
+   DIGITADOR            VARCHAR2(15)         default USER  not null,
+   MODIFICADO           DATE                 default SYSDATE  not null,
+   constraint PK_TELEFONO primary key (NUMERO_TELEFONO, DOC_IDENTIDAD)
+)
+/
+
+/*==============================================================*/
+/* Index: TIENE_TELEFONOS_FK                                    */
+/*==============================================================*/
+create index TIENE_TELEFONOS_FK on TELEFONO (
+   DOC_IDENTIDAD ASC
+)
+/
+
+/*==============================================================*/
+/* Table: TIPO_DE_APARTAMENTO                                   */
+/*==============================================================*/
+create table TIPO_DE_APARTAMENTO (
+   TIPO                 VARCHAR2(1)           not null,
+   AREA                 NUMBER                not null,
+   HABITACIONES         INTEGER               not null,
+   BANOS                INTEGER               not null,
+   DIGITADOR            VARCHAR2(15)         default USER  not null,
+   MODIFICADO           DATE                 default SYSDATE  not null,
+   constraint PK_TIPO_DE_APARTAMENTO primary key (TIPO)
+)
+/
+
+/*==============================================================*/
+/* Table: TRANSACCION                                           */
+/*==============================================================*/
+create table TRANSACCION (
+   ID_TRANSACCION       INTEGER             
+      generated as identity ( start with 1 nocycle noorder)  not null,
+   IDENTIFICACION       VARCHAR2(6),
+   TIPO_TRANSACCION     VARCHAR2(20)          not null,
+   VALOR_TOTAL          FLOAT                 not null,
+   FECHA_TRANSACCION    DATE                  not null,
+   COMENTARIOS          VARCHAR2(200),
+   DIGITADOR            VARCHAR2(15)         default USER  not null,
+   MODIFICADO           DATE                 default SYSDATE  not null,
+   constraint PK_TRANSACCION primary key (ID_TRANSACCION)
+)
+/
+
+/*==============================================================*/
+/* Index: RECAUDO_APARTAMENTOS_FK                               */
+/*==============================================================*/
+create index RECAUDO_APARTAMENTOS_FK on TRANSACCION (
+   IDENTIFICACION ASC
+)
+/
+
+/*==============================================================*/
+/* Table: VEHICULO                                              */
+/*==============================================================*/
+create table VEHICULO (
+   PLACA                VARCHAR2(6)           not null,
+   PARQUEADERO_NUMERO   VARCHAR2(5),
+   TIPO_VEHICULO        VARCHAR2(5)           not null,
+   FECHA_ULTIMO_INGRESO DATE                  not null,
+   FECHA_ULTIMA_SALIDA  DATE,
+   DESCRIPCION          VARCHAR2(300)         not null,
+   DIGITADOR            VARCHAR2(15)         default USER  not null,
+   MODIFICADO           DATE                 default SYSDATE  not null,
+   constraint PK_VEHICULO primary key (PLACA)
+)
+/
+
+/*==============================================================*/
+/* Index: ASIGNADO_FK                                           */
+/*==============================================================*/
+create index ASIGNADO_FK on VEHICULO (
+   PARQUEADERO_NUMERO ASC
+)
+/
+
+/*==============================================================*/
+/* View: V_APARTAMENTO                                          */
+/*==============================================================*/
+create or replace view V_APARTAMENTO as
+select
+   IDENTIFICACION,
+   DOC_IDENTIDAD,
+   TIPO,
+   COMPROMISOS,
+   CHIP,
+   MATRICULA,
+   COEFICIENTE
+from
+   APARTAMENTO
+/
+
+/*==============================================================*/
+/* View: V_BICICLETERO                                          */
+/*==============================================================*/
+create or replace view V_BICICLETERO as
+select
+   BICICLETERO.BICICLETERO_NUMERO,
+   BICICLETERO.IDENTIFICACION,
+   BICICLETERO.BICICLETERO_OTROS
+from
+   BICICLETERO
+/
+
+/*==============================================================*/
+/* View: V_COMPRA                                               */
+/*==============================================================*/
+create or replace view V_COMPRA as
+select
+   COMPRA.ID_PRODUCTO,
+   COMPRA.ID_TRANSACCION,
+   COMPRA.CANTIDAD
+from
+   COMPRA
+/
+
+/*==============================================================*/
+/* View: V_CONTRATISTA                                          */
+/*==============================================================*/
+create or replace view V_CONTRATISTA as
+select
+   CONTRATISTA.DOC_IDENTIDAD,
+   CONTRATISTA.CONTRATO_ACTIVO,
+   CONTRATISTA.CARGO,
+   CONTRATISTA.APTITUD,
+   CONTRATISTA.OBSERVACIONES,
+   CONTRATISTA.PRIMER_CONTRATO
+from
+   CONTRATISTA
+/
+
+/*==============================================================*/
+/* View: V_DEPOSITO                                             */
+/*==============================================================*/
+create or replace view V_DEPOSITO as
+select
+   DEPOSITO.DEPOSITO_NUMERO,
+   DEPOSITO.IDENTIFICACION,
+   DEPOSITO.DEPOSITO_OTROS
+from
+   DEPOSITO
+/
+
+/*==============================================================*/
+/* View: V_MASCOTA                                              */
+/*==============================================================*/
+create or replace view V_MASCOTA as
+select
+   MASCOTA.ID_MASCOTA,
+   MASCOTA.IDENTIFICACION,
+   MASCOTA.ESPECIE,
+   MASCOTA.RAZA
+from
+   MASCOTA
+/
+
+/*==============================================================*/
+/* View: V_PARQUEADERO                                          */
+/*==============================================================*/
+create or replace view V_PARQUEADERO as
+select
+   PARQUEADERO.PARQUEADERO_NUMERO,
+   PARQUEADERO.IDENTIFICACION,
+   PARQUEADERO.TIPO_PARQUEADERO,
+   PARQUEADERO.OTROS
+from
+   PARQUEADERO
+/
+
+/*==============================================================*/
+/* View: V_PERSONA                                              */
+/*==============================================================*/
+create or replace view V_PERSONA as
+select
+   DOC_IDENTIDAD,
+   APARTAMENTO_DE_RESIDENCIA,
+   ADULTO_RESPONSABLE,
+   NOMBRE,
+   FECHA_NACIMIENTO,
+   ESTADO_CIVIL,
+   GENERO,
+   LUGAR_DE_NACIMIENTO,
+   DIRECCION,
+   PERSONA_DE_CONTACTO,
+   INFO_SANGRE,
+   CORREO,
+   CARGO_EMPLEADO,
+   TAG,
+   INFO_LABORAL
+from
+   PERSONA
+/
+
+/*==============================================================*/
+/* View: V_PRODUCTO                                             */
+/*==============================================================*/
+create or replace view V_PRODUCTO as
+select
+   PRODUCTO.ID_PRODUCTO,
+   PRODUCTO.ID_PROVEEDOR,
+   PRODUCTO.DOC_IDENTIDAD,
+   PRODUCTO.NOMBRE,
+   PRODUCTO.UNIDAD_DE_MERCADEO,
+   PRODUCTO.PRECIO_UNITARIO,
+   PRODUCTO.INVENTARIO
+from
+   PRODUCTO
+/
+
+/*==============================================================*/
+/* View: V_PROVEEDOR                                            */
+/*==============================================================*/
+create or replace view V_PROVEEDOR as
+select
+   PROVEEDOR.ID_PROVEEDOR,
+   PROVEEDOR.NOMBRE,
+   PROVEEDOR.NIT,
+   PROVEEDOR.CONMUTADOR,
+   PROVEEDOR.DIRECCION,
+   PROVEEDOR.REP_LEGAL,
+   PROVEEDOR.PERSONA_DE_CONTACTO
+from
+   PROVEEDOR
+/
+
+/*==============================================================*/
+/* View: V_RECURSO_COMUNAL                                      */
+/*==============================================================*/
+create or replace view V_RECURSO_COMUNAL as
+select
+   RECURSO_COMUNAL.NOMBRE_RECURSO,
+   RECURSO_COMUNAL.DESCRIPCION_RECURSO,
+   RECURSO_COMUNAL.CAPACIDAD,
+   RECURSO_COMUNAL.HORA_APERTURA,
+   RECURSO_COMUNAL.HORA_CIERRE,
+   RECURSO_COMUNAL.COSTO_HR,
+   RECURSO_COMUNAL.PERMITE_VISITAS
+from
+   RECURSO_COMUNAL
+/
+
+/*==============================================================*/
+/* View: V_REGISTRO_DE_ACCIONES                                 */
+/*==============================================================*/
+create or replace view V_REGISTRO_DE_ACCIONES as
+select
+   REGISTRO_DE_ACCIONES.REGISTRO_NUMERO,
+   REGISTRO_DE_ACCIONES.ACCION,
+   REGISTRO_DE_ACCIONES.USUARIO,
+   REGISTRO_DE_ACCIONES.OBJETO,
+   REGISTRO_DE_ACCIONES.FECHA
+from
+   REGISTRO_DE_ACCIONES
+with read only
+/
+
+/*==============================================================*/
+/* View: V_REGISTRO_GUARDAS                                     */
+/*==============================================================*/
+create or replace view V_REGISTRO_GUARDAS as
+select
+   REGISTRO_GUARDAS.REGISTRO_GUARDA,
+   REGISTRO_GUARDAS.DOC_IDENTIDAD,
+   REGISTRO_GUARDAS.TURNO,
+   REGISTRO_GUARDAS.PUESTO,
+   REGISTRO_GUARDAS.FECHA
+from
+   REGISTRO_GUARDAS
+/
+
+/*==============================================================*/
+/* View: V_REGISTRO_REC_COM                                     */
+/*==============================================================*/
+create or replace view V_REGISTRO_REC_COM as
+select
+   REGISTRO_REC_COM.REGISTRO_USO_RECURSO,
+   REGISTRO_REC_COM.NOMBRE_RECURSO,
+   REGISTRO_REC_COM.DOC_IDENTIDAD,
+   REGISTRO_REC_COM.FECHA_DE_RESERVA,
+   REGISTRO_REC_COM.DURACION_RESERVA,
+   REGISTRO_REC_COM.NUMERO_DE_USUARIOS,
+   REGISTRO_REC_COM.DIGITADOR,
+   REGISTRO_REC_COM.MODIFICADO
+from
+   REGISTRO_REC_COM
+/
+
+/*==============================================================*/
+/* View: V_REGISTRO_VISITAS                                     */
+/*==============================================================*/
+create or replace view V_REGISTRO_VISITAS as
+select
+   REGISTRO_VISITAS.REGISTRO_VISITANTE,
+   REGISTRO_VISITAS.DOC_IDENTIDAD,
+   REGISTRO_VISITAS.PLACA,
+   REGISTRO_VISITAS.IDENTIFICACION,
+   REGISTRO_VISITAS.FECHA_INGRESO,
+   REGISTRO_VISITAS.FECHA_SALIDA,
+   REGISTRO_VISITAS.TIPO_VISITA
+from
+   REGISTRO_VISITAS
+/
+
+/*==============================================================*/
+/* View: V_TELEFONO                                             */
+/*==============================================================*/
+create or replace view V_TELEFONO as
+select
+   TELEFONO.NUMERO_TELEFONO,
+   TELEFONO.DOC_IDENTIDAD
+from
+   TELEFONO
+/
+
+/*==============================================================*/
+/* View: V_TIPO_DE_APARTAMENTO                                  */
+/*==============================================================*/
+create or replace view V_TIPO_DE_APARTAMENTO as
+select
+   TIPO_DE_APARTAMENTO.TIPO,
+   TIPO_DE_APARTAMENTO.AREA,
+   TIPO_DE_APARTAMENTO.HABITACIONES,
+   TIPO_DE_APARTAMENTO.BANOS
+from
+   TIPO_DE_APARTAMENTO
+/
+
+/*==============================================================*/
+/* View: V_TRANSACCION                                          */
+/*==============================================================*/
+create or replace view V_TRANSACCION as
+select
+   TRANSACCION.ID_TRANSACCION,
+   TRANSACCION.IDENTIFICACION,
+   TRANSACCION.TIPO_TRANSACCION,
+   TRANSACCION.VALOR_TOTAL,
+   TRANSACCION.FECHA_TRANSACCION,
+   TRANSACCION.COMENTARIOS
+from
+   TRANSACCION
+/
+
+/*==============================================================*/
+/* View: V_VEHICULO                                             */
+/*==============================================================*/
+create or replace view V_VEHICULO as
+select
+   VEHICULO.PLACA,
+   VEHICULO.PARQUEADERO_NUMERO,
+   VEHICULO.TIPO_VEHICULO,
+   VEHICULO.FECHA_ULTIMO_INGRESO,
+   VEHICULO.FECHA_ULTIMA_SALIDA,
+   VEHICULO.DESCRIPCION
+from
+   VEHICULO
+/
+
+alter table APARTAMENTO
+   add constraint FK_APARTAME_ES_PROPIE_PERSONA foreign key (DOC_IDENTIDAD)
+      references PERSONA (DOC_IDENTIDAD)
+/
+
+alter table APARTAMENTO
+   add constraint FK_APARTAME_TIPO_DE_A_TIPO_DE_ foreign key (TIPO)
+      references TIPO_DE_APARTAMENTO (TIPO)
+/
+
+alter table MASCOTA
+   add constraint FK_MASCOTA_ES_RESPON_APARTAME foreign key (IDENTIFICACION)
+      references APARTAMENTO (IDENTIFICACION)
+/
+
+alter table PARQUEADERO
+   add constraint FK_PARQUEAD_PARQUEADE_APARTAME foreign key (IDENTIFICACION)
+      references APARTAMENTO (IDENTIFICACION)
+/
+
+alter table PERSONA
+   add constraint FK_PERSONA_ES_RESIDE_APARTAME foreign key (APARTAMENTO_DE_RESIDENCIA)
+      references APARTAMENTO (IDENTIFICACION)
+/
+
+alter table PERSONA
+   add constraint FK_PERSONA_RESPONSAB_PERSONA foreign key (ADULTO_RESPONSABLE)
+      references PERSONA (DOC_IDENTIDAD)
+/
+
+alter table PRODUCTO
+   add constraint FK_PRODUCTO_OFRECE_PROVEEDO foreign key (ID_PROVEEDOR)
+      references PROVEEDOR (ID_PROVEEDOR)
+/
+
+alter table REGISTRO_VISITAS
+   add constraint FK_REGISTRO_SE_DIRIGE_APARTAME foreign key (IDENTIFICACION)
+      references APARTAMENTO (IDENTIFICACION)
+/
+
+alter table REGISTRO_VISITAS
+   add constraint FK_REGISTRO_TIENE_PERSONA foreign key (DOC_IDENTIDAD)
+      references PERSONA (DOC_IDENTIDAD)
+/
+
+alter table REGISTRO_VISITAS
+   add constraint FK_REGISTRO_VEHICULO__VEHICULO foreign key (PLACA)
+      references VEHICULO (PLACA)
+/
+
+alter table VEHICULO
+   add constraint FK_VEHICULO_ASIGNADO_PARQUEAD foreign key (PARQUEADERO_NUMERO)
+      references PARQUEADERO (PARQUEADERO_NUMERO)
+/
+
+
+create trigger REGISTRO_APARTAMENTO_AI after insert
+on APARTAMENTO
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('INSERT',USER,'APARTAMENTO',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_APARTAMENTO_AD after delete
+on APARTAMENTO
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('DELETE',USER,'APARTAMENTO',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_APARTAMENTO_AU after update
+on APARTAMENTO
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('UPDATE',USER,'APARTAMENTO',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_BICICLETERO_AD after delete
+on BICICLETERO
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('DELETE',USER,'BICICLETERO',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_BICICLETERO_AI after insert
+on BICICLETERO
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('INSERT',USER,'BICICLETERO',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_BICICLETERO_AU after update
+on BICICLETERO
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('UPDATE',USER,'BICICLETERO',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_COMPRA_AD after delete
+on COMPRA
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('DELETE',USER,'COMPRA',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_COMPRA_AI after insert
+on COMPRA
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('INSERT',USER,'COMPRA',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_COMPRA_AU after update
+on COMPRA
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('UPDATE',USER,'COMPRA',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_CONTRATISTA_AD after delete
+on CONTRATISTA
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('DELETE',USER,'CONTRATISTA',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_CONTRATISTA_AI after insert
+on CONTRATISTA
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('INSERT',USER,'CONTRATISTA',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_CONTRATISTA_AU after update
+on CONTRATISTA
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('UPDATE',USER,'CONTRATISTA',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_DEPOSITO_AD after delete
+on DEPOSITO
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('DELETE',USER,'DEPOSITO',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_DEPOSITO_AI after insert
+on DEPOSITO
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('INSERT',USER,'DEPOSITO',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_DEPOSITO_AU after update
+on DEPOSITO
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('UPDATE',USER,'DEPOSITO',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_MASCOTA_AD after delete
+on MASCOTA
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('DELETE',USER,'MASCOTA',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_MASCOTA_AI after insert
+on MASCOTA
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('INSERT',USER,'MASCOTA',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_MASCOTA_AU after update
+on MASCOTA
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('UPDATE',USER,'MASCOTA',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_PARQUEADERO_AD after delete
+on PARQUEADERO
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('DELETE',USER,'PARQUEADERO',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_PARQUEADERO_AI after insert
+on PARQUEADERO
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('INSERT',USER,'PARQUEADERO',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_PARQUEADERO_AU after update
+on PARQUEADERO
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('UPDATE',USER,'PARQUEADERO',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_PERSONA_AD after delete
+on PERSONA
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('DELETE',USER,'PERSONA',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_PERSONA_AI after insert
+on PERSONA
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('INSERT',USER,'PERSONA',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_PERSONA_AU after update
+on PERSONA
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('UPDATE',USER,'PERSONA',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_PRODUCTO_AD after delete
+on PRODUCTO
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('DELETE',USER,'PRODUCTO',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_PRODUCTO_AI after insert
+on PRODUCTO
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('INSERT',USER,'PRODUCTO',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_PRODUCTO_AU after update
+on PRODUCTO
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('UPDATE',USER,'PRODUCTO',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_PROVEEDOR_AD after delete
+on PROVEEDOR
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('DELETE',USER,'PROVEEDOR',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_PROVEEDOR_AI after insert
+on PROVEEDOR
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('INSERT',USER,'PROVEEDOR',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_PROVEEDOR_AU after update
+on PROVEEDOR
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('UPDATE',USER,'PROVEEDOR',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_REC_COM_AD after delete
+on RECURSO_COMUNAL
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('DELETE',USER,'RECURSO_COMUNAL',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_REC_COM_AI after insert
+on RECURSO_COMUNAL
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('INSERT',USER,'RECURSO_COMUNAL',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_REC_COM_AU after update
+on RECURSO_COMUNAL
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('UPDATE',USER,'RECURSO_COMUNAL',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_REG_GUARD_AD after delete
+on REGISTRO_GUARDAS
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('DELETE',USER,'REGISTRO_GUARDAS',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_REG_GUARD_AI after insert
+on REGISTRO_GUARDAS
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('INSERT',USER,'REGISTRO_GUARDAS',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_REG_GUARD_AU after update
+on REGISTRO_GUARDAS
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('UPDATE',USER,'REGISTRO_GUARDAS',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_REG_REC_COM_AD after delete
+on REGISTRO_REC_COM
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('DELETE',USER,'REGISTRO_REC_COM',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_REG_REC_COM_AI after insert
+on REGISTRO_REC_COM
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('INSERT',USER,'REGISTRO_REC_COM',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_REG_REC_COM_AU after update
+on REGISTRO_REC_COM
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('UPDATE',USER,'REGISTRO_REC_COM',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_REG_VISITAS_AD after delete
+on REGISTRO_VISITAS
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('DELETE',USER,'REGISTRO_VISITAS',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_REG_VISITAS_AI after insert
+on REGISTRO_VISITAS
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('INSERT',USER,'REGISTRO_VISITAS',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_REG_VISITAS_AU after update
+on REGISTRO_VISITAS
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('UPDATE',USER,'REGISTRO_VISITAS',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_TELEFONO_AD after delete
+on TELEFONO
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('DELETE',USER,'TELEFONO',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_TELEFONO_AI after insert
+on TELEFONO
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('INSERT',USER,'TELEFONO',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_TELEFONO_AU after update
+on TELEFONO
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('UPDATE',USER,'TELEFONO',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_TIPO_APTO_AD after delete
+on TIPO_DE_APARTAMENTO
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('DELETE',USER,'TIPO_DE_APARTAMENTO',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_TIPO_APTO_AI after insert
+on TIPO_DE_APARTAMENTO
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('INSERT',USER,'TIPO_DE_APARTAMENTO',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_TIPO_APTO_AU after update
+on TIPO_DE_APARTAMENTO
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('UPDATE',USER,'TIPO_DE_APARTAMENTO',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_TRANSACCION_AD after delete
+on TRANSACCION
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('DELETE',USER,'TRANSACCION',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_TRANSACCION_AI after insert
+on TRANSACCION
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('INSERT',USER,'TRANSACCION',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_TRANSACCION_AU after update
+on TRANSACCION
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('UPDATE',USER,'TRANSACCION',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_VEHICULO_AD after delete
+on VEHICULO
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('DELETE',USER,'VEHICULO',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_VEHICULO_AI after insert
+on VEHICULO
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('INSERT',USER,'VEHICULO',SYSDATE);
+end;
+/
+
+
+create trigger REGISTRO_VEHICULO_AU after update
+on VEHICULO
+begin
+    INSERT INTO REGISTRO_DE_ACCIONES (ACCION,USUARIO,OBJETO,FECHA) VALUES ('UPDATE',USER,'VEHICULO',SYSDATE);
+end;
+/
